@@ -1,4 +1,4 @@
-[
+export const NAMES = [
   "Aaberg",
   "Aalst",
   "Aara",
@@ -21984,5 +21984,5 @@
   "Zweig",
   "Zwick",
   "Zwiebel",
-  "Zysk"
-]
+  "Zysk",
+];

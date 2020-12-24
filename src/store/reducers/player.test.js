@@ -1,7 +1,7 @@
 import * as actionTypes from "../actions/actionTypes";
-import reducer from "./user";
+import reducer from "./player";
 
-describe("user reducer", () => {
+describe("player reducer", () => {
   const initialState = {
     username: "Newbie",
   };
@@ -19,6 +19,7 @@ describe("user reducer", () => {
       username: username,
     });
 
+    expect(newState).not.toEqual(initialState);
     expect(newState.username).toEqual(username);
   });
 });

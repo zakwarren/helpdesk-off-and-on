@@ -48,7 +48,7 @@ Menu.propTypes = {
 
 export const mapStateToProps = (state) => {
   return {
-    username: state.user.username,
+    username: state.player.username,
   };
 };
 

@@ -7,13 +7,13 @@ import { mapStateToProps, Menu } from "./Menu";
 describe("<Menu />", () => {
   describe("mapStateToProps", () => {
     it("should map the state to props correctly", () => {
-      const user = {
+      const player = {
         username: "Newbie",
       };
-      const appState = { user: user };
+      const appState = { player: player };
       const componentState = mapStateToProps(appState);
 
-      expect(componentState).toEqual(user);
+      expect(componentState).toEqual(player);
     });
   });
 

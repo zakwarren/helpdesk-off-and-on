@@ -1,7 +1,8 @@
 import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import thunk from "redux-thunk";
 
-import userReducer from "./user";
+import playerReducer from "./player";
+import gameReducer from "./game";
 
 const composeEnhancers =
   (process.env.NODE_ENV === "development"
@@ -9,7 +10,8 @@ const composeEnhancers =
     : null) || compose;
 
 const rootReducer = combineReducers({
-  user: userReducer,
+  player: playerReducer,
+  game: gameReducer,
 });
 
 const store = createStore(
