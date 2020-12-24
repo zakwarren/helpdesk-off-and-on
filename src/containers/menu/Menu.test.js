@@ -20,9 +20,11 @@ describe("<Menu />", () => {
   });
 
   it("should render a menu button <div /> element", () => {
-    const div = wrapper.find(`div.${css.MenuButton}`);
+    const bar = wrapper.find(`div.${css.MenuBar}`);
+    const btn = wrapper.find(`div.${css.MenuButton}`);
 
-    expect(div).toHaveLength(1);
+    expect(bar).toHaveLength(1);
+    expect(btn).toHaveLength(1);
   });
 
   it("should render a <header /> element with the correct class", () => {

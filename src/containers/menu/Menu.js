@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faBars,
   faUser,
   faTachometerAlt,
   faUsers,
@@ -12,7 +13,11 @@ import css from "./Menu.module.css";
 
 export const Menu = ({ username }) => (
   <nav className={css.Menu} tabIndex="0">
-    <div className={css.MenuButton} />
+    <div className={css.MenuBar}>
+      <div className={css.MenuButton}>
+        <FontAwesomeIcon icon={faBars} />
+      </div>
+    </div>
     <header className={css.Header}>
       <div className={css.Avatar}>
         <FontAwesomeIcon icon={faUser} />

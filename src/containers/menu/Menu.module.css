@@ -70,6 +70,10 @@
   color: var(--white);
 }
 
+.MenuButton {
+  display: none;
+}
+
 @media screen and (max-width: 900px) and (min-width: 400px) {
   .Menu {
     width: 20%;
@@ -134,8 +138,8 @@
     font-size: 100%;
   }
 
-  .Menu .MenuButton {
-    width: 2.5rem;
+  .Menu .MenuBar {
+    width: 100vw;
     height: 2.5rem;
     position: absolute;
     left: 100%;
@@ -143,21 +147,14 @@
     background-color: var(--theme);
   }
 
-  .Menu .MenuButton:before,
-  .Menu .MenuButton:after {
-    content: "";
-    width: 50%;
-    height: 0.12rem;
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    background-color: #fdfffc;
-    background-color: var(--white);
-    border-radius: 0.6rem;
-    transform: translate3d(-50%, -50%, 0);
+  .MenuButton {
+    padding: 0.25rem 0 0 1rem;
+    font-size: 1.5rem;
+    filter: brightness(100);
+    display: block;
   }
 
-  .Menu .MenuButton:after {
+  .Menu .MenuBar:after {
     top: 55%;
     transform: translate3d(-50%, -50%, 0);
   }
@@ -172,7 +169,7 @@
     transform: translate3d(0, 0, 0);
   }
 
-  .Menu:focus .MenuButton {
+  .Menu:focus .MenuBar {
     pointer-events: none;
   }
 }
