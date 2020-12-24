@@ -1,18 +1,20 @@
 :root {
-  --theme: #898989;
-  --theme-light: #a3a3a3;
-  --theme2: #c84630;
-  --theme3: #d4a0a7;
-  --theme4: #5da271;
+  --theme: #2a9d8f;
+  --theme2: #e9c46a;
+  --theme3: #f4a261;
+  --theme4: #e76f51;
 
-  --white: #e3e3e3;
-  --black: #141414;
+  --theme-light: #7eddd2;
+  --theme-dark: #1e7167;
+
+  --white: #fdfffc;
+  --black: #264653;
 }
 
 * {
   box-sizing: border-box;
   font-family: "Open Sans", Tahoma, Geneva, Verdana, sans-serif;
-  color: #141414;
+  color: #264653;
   color: var(--black);
 }
 

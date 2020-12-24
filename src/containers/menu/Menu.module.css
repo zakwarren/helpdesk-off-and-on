@@ -1,0 +1,178 @@
+.Menu {
+  width: 20vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  background-color: #2a9d8f;
+  background-color: var(--theme);
+  outline: none;
+}
+
+.Menu .Header {
+  position: relative;
+}
+
+.Menu .Avatar {
+  margin: auto;
+  width: 10vw;
+  height: 10vw;
+  background-color: #fdfffc;
+  background-color: var(--white);
+  border: 0.24rem solid #e9c46a;
+  border-color: var(--theme2);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2);
+  font-size: 5rem;
+  text-align: center;
+}
+
+.Menu .Header h2 {
+  margin: 1rem 0 0;
+  color: #fdfffc;
+  color: var(--white);
+  font-weight: normal;
+  text-align: center;
+}
+
+.Menu ul {
+  margin: 0;
+  padding: 0.5rem 0;
+  list-style: none;
+}
+
+.Menu ul li {
+  padding: 0.5em 1em 0.5em 3em;
+  color: #fdfffc;
+  color: var(--white);
+  font-size: 0.95em;
+  font-weight: regular;
+  transition: all 0.15s linear;
+  cursor: pointer;
+  filter: brightness(100);
+}
+
+.Menu ul li span {
+  padding-left: 1rem;
+}
+
+.Menu ul li:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.Menu ul li:focus {
+  outline: none;
+}
+
+.Menu ul li span {
+  color: #fdfffc;
+  color: var(--white);
+}
+
+@media screen and (max-width: 900px) and (min-width: 400px) {
+  .Menu {
+    width: 20%;
+  }
+
+  .Menu .Avatar {
+    font-size: 2rem;
+  }
+
+  .Menu ul li {
+    padding: 1rem;
+    height: 3.75rem;
+    position: relative;
+    text-align: center;
+  }
+
+  .Menu .Header h2,
+  .Menu ul li span {
+    margin: 0;
+    min-width: 12.5rem;
+    position: absolute;
+    top: 50%;
+    left: 6.25rem;
+    opacity: 0;
+    background-color: #7eddd2;
+    background-color: var(--theme-light);
+    border-radius: 0.24rem;
+    transform: translate3d(-1.25rem, -50%, 0);
+    transition: all 0.15s ease-in-out;
+  }
+
+  .Menu .Header:hover h2,
+  .Menu ul li:hover span {
+    opacity: 1;
+    transform: translate3d(0, -50%, 0);
+  }
+
+  .Menu ul li span:before {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 50%;
+    left: -0.3rem;
+    border-top: 0.3rem solid transparent;
+    border-bottom: 0.3rem solid transparent;
+    border-right: 0.3rem solid #7eddd2;
+    border-color: var(--theme-light);
+    transform: translateY(-50%);
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .Menu {
+    width: 14.4rem;
+    box-shadow: 0 0 0 100em rgba(0, 0, 0, 0);
+    transform: translate3d(-14.4rem, 0, 0);
+    transition: all 0.3s ease-in-out;
+  }
+
+  .Menu .Avatar {
+    font-size: 100%;
+  }
+
+  .Menu .SmartphoneMenuTrigger {
+    width: 2.5rem;
+    height: 2.5rem;
+    position: absolute;
+    left: 100%;
+    background-color: #2a9d8f;
+    background-color: var(--theme);
+  }
+
+  .Menu .SmartphoneMenuTrigger:before,
+  .Menu .SmartphoneMenuTrigger:after {
+    content: "";
+    width: 50%;
+    height: 0.12rem;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    background-color: #fdfffc;
+    background-color: var(--white);
+    border-radius: 0.6rem;
+    transform: translate3d(-50%, -50%, 0);
+  }
+
+  .Menu .SmartphoneMenuTrigger:after {
+    top: 55%;
+    transform: translate3d(-50%, -50%, 0);
+  }
+
+  .Menu ul li {
+    padding: 1em 1em 1em 3em;
+    font-size: 1.2em;
+  }
+
+  .Menu:focus {
+    box-shadow: 0 0 0 100em rgba(0, 0, 0, 0.6);
+    transform: translate3d(0, 0, 0);
+  }
+
+  .Menu:focus .SmartphoneMenuTrigger {
+    pointer-events: none;
+  }
+}

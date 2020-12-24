@@ -1,7 +1,9 @@
 import React from "react";
 
+import Menu from "./containers/menu/Menu";
+
 const App = () => {
-  return <div></div>;
+  return <Menu username="Test" />;
 };
 
 export default App;
