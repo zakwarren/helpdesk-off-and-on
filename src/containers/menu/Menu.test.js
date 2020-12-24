@@ -2,62 +2,76 @@ import React from "react";
 import { shallow } from "enzyme";
 
 import css from "./Menu.module.css";
-import Menu from "./Menu";
+import { mapStateToProps, Menu } from "./Menu";
 
 describe("<Menu />", () => {
-  let wrapper;
-  const username = "Test";
+  describe("mapStateToProps", () => {
+    it("should map the state to props correctly", () => {
+      const user = {
+        username: "Newbie",
+      };
+      const appState = { user: user };
+      const componentState = mapStateToProps(appState);
 
-  beforeEach(() => {
-    wrapper = shallow(<Menu username={username} />);
+      expect(componentState).toEqual(user);
+    });
   });
 
-  it("should render with a <Nav /> element and correct class", () => {
-    const nav = wrapper.find("nav");
+  describe("display", () => {
+    let wrapper;
+    const username = "Test";
 
-    expect(nav).toHaveLength(1);
-    expect(nav.hasClass(css.Menu)).toEqual(true);
-  });
+    beforeEach(() => {
+      wrapper = shallow(<Menu username={username} />);
+    });
 
-  it("should render a menu button <div /> element", () => {
-    const bar = wrapper.find(`div.${css.MenuBar}`);
-    const btn = wrapper.find(`div.${css.MenuButton}`);
+    it("should render with a <Nav /> element and correct class", () => {
+      const nav = wrapper.find("nav");
 
-    expect(bar).toHaveLength(1);
-    expect(btn).toHaveLength(1);
-  });
+      expect(nav).toHaveLength(1);
+      expect(nav.hasClass(css.Menu)).toEqual(true);
+    });
 
-  it("should render a <header /> element with the correct class", () => {
-    const header = wrapper.find("header");
+    it("should render a menu button <div /> element", () => {
+      const bar = wrapper.find(`div.${css.MenuBar}`);
+      const btn = wrapper.find(`div.${css.MenuButton}`);
 
-    expect(header).toHaveLength(1);
-    expect(header.hasClass(css.Header)).toEqual(true);
-  });
+      expect(bar).toHaveLength(1);
+      expect(btn).toHaveLength(1);
+    });
 
-  it("should render a avatar <div /> element", () => {
-    const div = wrapper.find(`div.${css.Avatar}`);
+    it("should render a <header /> element with the correct class", () => {
+      const header = wrapper.find("header");
 
-    expect(div).toHaveLength(1);
-  });
+      expect(header).toHaveLength(1);
+      expect(header.hasClass(css.Header)).toEqual(true);
+    });
 
-  it("should render a <h2 /> element with the username as text", () => {
-    const h2 = wrapper.find("h2");
+    it("should render a avatar <div /> element", () => {
+      const div = wrapper.find(`div.${css.Avatar}`);
 
-    expect(h2).toHaveLength(1);
-    expect(h2.text()).toEqual(username);
-  });
+      expect(div).toHaveLength(1);
+    });
 
-  it("should render a <ul /> element", () => {
-    const ul = wrapper.find("ul");
+    it("should render a <h2 /> element with the username as text", () => {
+      const h2 = wrapper.find("h2");
 
-    expect(ul).toHaveLength(1);
-  });
+      expect(h2).toHaveLength(1);
+      expect(h2.text()).toEqual(username);
+    });
 
-  it("should render the menu items in <li /> elements", () => {
-    const lis = wrapper.find("li");
-    const spans = wrapper.find("span");
+    it("should render a <ul /> element", () => {
+      const ul = wrapper.find("ul");
 
-    expect(lis).toHaveLength(3);
-    expect(spans).toHaveLength(3);
+      expect(ul).toHaveLength(1);
+    });
+
+    it("should render the menu items in <li /> elements", () => {
+      const lis = wrapper.find("li");
+      const spans = wrapper.find("span");
+
+      expect(lis).toHaveLength(3);
+      expect(spans).toHaveLength(3);
+    });
   });
 });

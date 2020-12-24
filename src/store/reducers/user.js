@@ -2,7 +2,7 @@ import * as actionTypes from "../actions/actionTypes";
 import { updateObject } from "../../shared/utilities";
 
 const initialState = {
-  username: null,
+  username: "Newbie",
 };
 
 const reducer = (state = initialState, action) => {

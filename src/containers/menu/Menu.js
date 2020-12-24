@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
@@ -45,4 +46,10 @@ Menu.propTypes = {
   username: PropTypes.string.isRequired,
 };
 
-export default Menu;
+export const mapStateToProps = (state) => {
+  return {
+    username: state.user.username,
+  };
+};
+
+export default connect(mapStateToProps)(Menu);

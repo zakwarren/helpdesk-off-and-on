@@ -3,7 +3,7 @@ import reducer from "./user";
 
 describe("user reducer", () => {
   const initialState = {
-    username: {},
+    username: "Newbie",
   };
 
   it("should return the initial state when invalid type", () => {
