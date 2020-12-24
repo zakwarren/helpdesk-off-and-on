@@ -1,0 +1,9 @@
+.Card {
+  width: 100%;
+  box-shadow: 0 0.24rem 0.5rem 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+
+.Container {
+  padding: 0.12rem 1rem;
+}
