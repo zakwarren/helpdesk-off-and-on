@@ -8,6 +8,7 @@ describe("game reducer", () => {
     allOptions: {},
     allDisasters: {},
     customer: null,
+    issueType: null,
     issue: null,
   };
 
@@ -21,12 +22,14 @@ describe("game reducer", () => {
     const action = {
       type: actionTypes.SET_CUSTOMER,
       customer: "Test",
+      issueType: "test",
       issue: "testing",
     };
     const newState = reducer(initialState, action);
 
     expect(newState).not.toEqual(initialState);
     expect(newState.customer).toEqual(action.customer);
+    expect(newState.issueType).toEqual(action.issueType);
     expect(newState.issue).toEqual(action.issue);
   });
 });

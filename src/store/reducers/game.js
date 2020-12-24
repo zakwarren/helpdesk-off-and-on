@@ -9,6 +9,7 @@ const initialState = {
   allOptions: OPTIONS,
   allDisasters: DISASTERS,
   customer: null,
+  issueType: null,
   issue: null,
 };
 
@@ -17,6 +18,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.SET_CUSTOMER:
       return updateObject(state, {
         customer: action.customer,
+        issueType: action.issueType,
         issue: action.issue,
       });
     default:

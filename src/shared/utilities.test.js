@@ -1,4 +1,4 @@
-import { updateObject } from "./utilities";
+import { updateObject, getRandomArrayItem } from "./utilities";
 
 describe("shared utility functions", () => {
   describe("updateObject", () => {
@@ -18,6 +18,16 @@ describe("shared utility functions", () => {
       expect(updated.test).toEqual(original.test);
       expect(updated.new).toEqual(newProperties.new);
       expect(updated.item).toEqual(newProperties.item);
+    });
+  });
+
+  describe("getRandomArrayItem", () => {
+    it("should return a random array item", () => {
+      const array = ["test", "test 2"];
+      const item = getRandomArrayItem(array);
+
+      expect(typeof item).toBe("string");
+      expect(array.includes(item)).toEqual(true);
     });
   });
 });
