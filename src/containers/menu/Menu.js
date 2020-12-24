@@ -12,7 +12,7 @@ import css from "./Menu.module.css";
 
 export const Menu = ({ username }) => (
   <nav className={css.Menu} tabIndex="0">
-    <div className={css.SmartphoneMenuTrigger}></div>
+    <div className={css.MenuButton} />
     <header className={css.Header}>
       <div className={css.Avatar}>
         <FontAwesomeIcon icon={faUser} />

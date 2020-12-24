@@ -134,7 +134,7 @@
     font-size: 100%;
   }
 
-  .Menu .SmartphoneMenuTrigger {
+  .Menu .MenuButton {
     width: 2.5rem;
     height: 2.5rem;
     position: absolute;
@@ -143,8 +143,8 @@
     background-color: var(--theme);
   }
 
-  .Menu .SmartphoneMenuTrigger:before,
-  .Menu .SmartphoneMenuTrigger:after {
+  .Menu .MenuButton:before,
+  .Menu .MenuButton:after {
     content: "";
     width: 50%;
     height: 0.12rem;
@@ -157,7 +157,7 @@
     transform: translate3d(-50%, -50%, 0);
   }
 
-  .Menu .SmartphoneMenuTrigger:after {
+  .Menu .MenuButton:after {
     top: 55%;
     transform: translate3d(-50%, -50%, 0);
   }
@@ -172,7 +172,7 @@
     transform: translate3d(0, 0, 0);
   }
 
-  .Menu:focus .SmartphoneMenuTrigger {
+  .Menu:focus .MenuButton {
     pointer-events: none;
   }
 }
