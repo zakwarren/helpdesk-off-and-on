@@ -17,7 +17,7 @@ export const getRandomCustomer = () => {
     const customer = getRandomArrayItem(allNames);
     const types = Object.keys(allIssues);
     const issueType = getRandomArrayItem(types);
-    const issue = getRandomArrayItem(types[issueType]);
+    const issue = getRandomArrayItem(allIssues[issueType]);
 
     dispatch(setCustomer(customer, issueType, issue));
   };

@@ -1,13 +1,15 @@
 import React from "react";
 
 import css from "./App.module.css";
-import Menu from "./containers/menu/Menu";
+import { Menu, Helpdesk } from "./containers";
 
 const App = () => {
   return (
     <>
       <Menu username="Test" />
-      <main className={css.Main}></main>
+      <main className={css.Main}>
+        <Helpdesk />
+      </main>
     </>
   );
 };
