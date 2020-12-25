@@ -1,16 +1,21 @@
 import * as actionTypes from "./actionTypes";
 import { getRandomArrayItem } from "../../shared/utilities";
 
-export const setCustomer = (customer, issueType, issue) => {
+export const setSelectedTicket = (ticket) => {
   return {
-    type: actionTypes.SET_CUSTOMER,
-    customer,
-    issueType,
-    issue,
+    type: actionTypes.SET_SELECTED_TICKET,
+    ticket,
   };
 };
 
-export const getRandomCustomer = () => {
+export const openTicket = (customer, issueType, issue) => {
+  return {
+    type: actionTypes.OPEN_TICKET,
+    ticket: { customer, issueType, issue },
+  };
+};
+
+export const openRandomTicket = () => {
   return (dispatch, getState) => {
     const { allNames, allIssues } = getState().game;
 
@@ -19,6 +24,13 @@ export const getRandomCustomer = () => {
     const issueType = getRandomArrayItem(types);
     const issue = getRandomArrayItem(allIssues[issueType]);
 
-    dispatch(setCustomer(customer, issueType, issue));
+    dispatch(openTicket(customer, issueType, issue));
+  };
+};
+
+export const closeTicket = (ticket) => {
+  return {
+    type: actionTypes.CLOSE_TICKET,
+    ticket,
   };
 };

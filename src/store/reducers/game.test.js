@@ -7,9 +7,9 @@ describe("game reducer", () => {
     allIssues: {},
     allOptions: {},
     allDisasters: {},
-    customer: null,
-    issueType: null,
-    issue: null,
+    closedTickets: [],
+    openTickets: [],
+    selectedTicket: null,
   };
 
   it("should return the initial state when invalid type", () => {
@@ -20,16 +20,40 @@ describe("game reducer", () => {
 
   it("should return the customer and issue", () => {
     const action = {
-      type: actionTypes.SET_CUSTOMER,
-      customer: "Test",
-      issueType: "test",
-      issue: "testing",
+      type: actionTypes.SET_SELECTED_TICKET,
+      selectedTicket: "test",
     };
     const newState = reducer(initialState, action);
 
     expect(newState).not.toEqual(initialState);
-    expect(newState.customer).toEqual(action.customer);
-    expect(newState.issueType).toEqual(action.issueType);
-    expect(newState.issue).toEqual(action.issue);
+    expect(newState.selectedTicket).toEqual(action.selectedTicket);
+  });
+
+  it("should return the closed ticket", () => {
+    const state = { ...initialState, selectedTicket: { id: 2 } };
+    const action = { type: actionTypes.CLOSE_TICKET, ticket: { id: 1 } };
+    const newState = reducer(state, action);
+
+    expect(newState).not.toEqual(state);
+    expect(newState.closedTickets).toEqual([action.ticket]);
+    expect(newState.selectedTicket).toEqual(state.selectedTicket);
+  });
+
+  it("should return the closed ticket and deselect ticket", () => {
+    const state = { ...initialState, selectedTicket: { id: 1 } };
+    const action = { type: actionTypes.CLOSE_TICKET, ticket: { id: 1 } };
+    const newState = reducer(state, action);
+
+    expect(newState).not.toEqual(state);
+    expect(newState.closedTickets).toEqual([action.ticket]);
+    expect(newState.selectedTicket).toBeNull();
+  });
+
+  it("should return the open ticket", () => {
+    const action = { type: actionTypes.OPEN_TICKET, ticket: { test: "test" } };
+    const newState = reducer(initialState, action);
+
+    expect(newState).not.toEqual(initialState);
+    expect(newState.openTickets).toEqual([{ id: 1, ...action.ticket }]);
   });
 });
