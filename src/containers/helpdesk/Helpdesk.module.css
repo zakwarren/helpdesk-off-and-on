@@ -10,9 +10,8 @@
 .Controls {
   padding: 1rem;
   height: 20vh;
-  border-top: 0.2rem solid #2a9d8f;
-  border-color: var(--theme);
-  box-shadow: 0 -0.24rem 0.5rem 0 rgba(0, 0, 0, 0.2);
+  border-top: 0.2rem solid var(--theme);
+  box-shadow: 0 -0.24rem 0.5rem 0 var(--shadow);
 }
 
 .Controls h3 {
@@ -30,12 +29,10 @@
 .OptionBtns button {
   margin: 0.25rem;
   padding: 0.75rem 0.5rem;
-  background-color: #2a9d8f;
   background-color: var(--theme);
   border: none;
   border-radius: 0.4rem;
   outline: none;
-  color: #fdfffc;
   color: var(--white);
   font-size: 1rem;
   cursor: pointer;
@@ -43,6 +40,5 @@
 }
 
 .OptionBtns button:hover {
-  background-color: #1e7167;
   background-color: var(--theme-dark);
 }

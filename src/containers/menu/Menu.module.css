@@ -5,7 +5,6 @@
   top: 0;
   left: 0;
   z-index: 5;
-  background-color: #2a9d8f;
   background-color: var(--theme);
   outline: none;
 }
@@ -19,10 +18,8 @@
   margin: auto;
   width: 10vw;
   height: 10vw;
-  background-color: #fdfffc;
   background-color: var(--white);
-  border: 0.24rem solid #e9c46a;
-  border-color: var(--theme2);
+  border: 0.24rem solid var(--theme2);
   border-radius: 50%;
   box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2);
   font-size: 5rem;
@@ -31,7 +28,6 @@
 
 .Menu .Header h2 {
   margin: 1rem 0 0;
-  color: #fdfffc;
   color: var(--white);
   font-weight: normal;
   text-align: center;
@@ -45,7 +41,6 @@
 
 .Menu ul li {
   padding: 0.5em 1em 0.5em 3em;
-  color: #fdfffc;
   color: var(--white);
   font-size: 0.95em;
   font-weight: regular;
@@ -59,7 +54,7 @@
 }
 
 .Menu ul li:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: var(--shadow);
 }
 
 .Menu ul li:focus {
@@ -67,7 +62,6 @@
 }
 
 .Menu ul li span {
-  color: #fdfffc;
   color: var(--white);
 }
 
@@ -99,7 +93,6 @@
     top: 50%;
     left: 6.25rem;
     opacity: 0;
-    background-color: #7eddd2;
     background-color: var(--theme-light);
     border-radius: 0.24rem;
     transform: translate3d(-1.25rem, -50%, 0);
@@ -121,8 +114,7 @@
     left: -0.3rem;
     border-top: 0.3rem solid transparent;
     border-bottom: 0.3rem solid transparent;
-    border-right: 0.3rem solid #7eddd2;
-    border-color: var(--theme-light);
+    border-right: 0.3rem solid var(--theme-light);
     transform: translateY(-50%);
   }
 }
@@ -144,7 +136,6 @@
     height: 2.5rem;
     position: absolute;
     left: 100%;
-    background-color: #2a9d8f;
     background-color: var(--theme);
   }
 

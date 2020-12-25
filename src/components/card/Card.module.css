@@ -1,17 +1,30 @@
 .Card {
   width: 100%;
-  box-shadow: 0 0.24rem 0.5rem 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.24rem 0.5rem 0 var(--shadow);
   transition: 0.3s;
 }
 
-.Card.Active {
+.Card.Enabled {
   cursor: pointer;
 }
 
+.Card.Enabled:hover {
+  box-shadow: 0 0.5rem 1rem 0 var(--shadow);
+}
+
+.Card.Active {
+  box-shadow: 0 0.24rem 0.5rem 0 var(--theme-light);
+}
+
 .Card.Active:hover {
-  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.5rem 1rem 0 var(--theme-light);
 }
 
 .Container {
   padding: 0.12rem 1rem;
+  color: var(--grey);
+}
+
+.Card.Enabled .Container {
+  color: var(--black);
 }

@@ -1,9 +1,9 @@
 .Issue {
   width: 100%;
+  color: inherit;
 }
 
 .Issue .Type {
-  color: #889696;
   color: var(--grey);
   font-size: 0.8rem;
   font-style: italic;

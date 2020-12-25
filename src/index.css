@@ -10,13 +10,12 @@
   --white: #fdfffc;
   --black: #264653;
   --grey: #889696;
+  --shadow: rgba(0, 0, 0, 0.2);
 }
 
 * {
   box-sizing: border-box;
   font-family: "Open Sans", Tahoma, Geneva, Verdana, sans-serif;
-  color: #264653;
-  color: var(--black);
 }
 
 html,
@@ -28,6 +27,8 @@ body {
 html {
   height: 100%;
   font-size: 16px;
+  color: #264653;
+  color: var(--black);
 }
 
 ::-webkit-scrollbar {
