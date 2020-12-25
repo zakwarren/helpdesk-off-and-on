@@ -7,12 +7,13 @@ import { Card } from "../card/Card";
 
 describe("<Issue />", () => {
   let wrapper;
+  const isActive = false;
   const customer = "Test";
   const issueType = "test";
   const issue = "Testing";
 
   beforeEach(() => {
-    wrapper = shallow(<Issue {...{ customer, issueType, issue }} />);
+    wrapper = shallow(<Issue {...{ isActive, customer, issueType, issue }} />);
   });
 
   it("should render a <Card /> element", () => {
@@ -32,7 +33,7 @@ describe("<Issue />", () => {
     const span = wrapper.find("span");
 
     expect(span).toHaveLength(1);
-    expect(span.hasClass(css.issueType)).toEqual(true);
+    expect(span.hasClass(css.Type)).toEqual(true);
     expect(span.text()).toEqual(issueType);
   });
 

@@ -4,6 +4,14 @@
   transition: 0.3s;
 }
 
+.Card.Active {
+  cursor: pointer;
+}
+
+.Card.Active:hover {
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.2);
+}
+
 .Container {
   padding: 0.12rem 1rem;
 }

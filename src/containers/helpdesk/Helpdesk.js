@@ -20,7 +20,7 @@ export const Helpdesk = (props) => {
   return (
     <>
       <section className={css.IssueTray}>
-        <Issue {...{ customer, issueType, issue }} />
+        <Issue isActive={true} {...{ customer, issueType, issue }} />
       </section>
       <section className={css.Controls}>
         <h3>Options</h3>
