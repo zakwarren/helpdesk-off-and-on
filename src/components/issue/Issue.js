@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 import css from "./Issue.module.css";
 import { Card } from "../card/Card";
 
-export const Issue = ({ isActive, customer, issueType, issue }) => (
-  <Card isActive={isActive}>
+export const Issue = ({ isEnabled, isActive, customer, issueType, issue }) => (
+  <Card {...{ isEnabled, isActive }}>
     <div className={css.Issue}>
       <span className={css.Type}>{issueType}</span>
       <h4>{customer}</h4>
@@ -15,6 +15,7 @@ export const Issue = ({ isActive, customer, issueType, issue }) => (
 );
 
 Issue.propTypes = {
+  isEnabled: PropTypes.bool.isRequired,
   isActive: PropTypes.bool.isRequired,
   customer: PropTypes.string.isRequired,
   issueType: PropTypes.string.isRequired,

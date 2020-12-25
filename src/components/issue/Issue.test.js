@@ -7,13 +7,16 @@ import { Card } from "../card/Card";
 
 describe("<Issue />", () => {
   let wrapper;
+  const isEnabled = false;
   const isActive = false;
   const customer = "Test";
   const issueType = "test";
   const issue = "Testing";
 
   beforeEach(() => {
-    wrapper = shallow(<Issue {...{ isActive, customer, issueType, issue }} />);
+    wrapper = shallow(
+      <Issue {...{ isEnabled, isActive, customer, issueType, issue }} />
+    );
   });
 
   it("should render a <Card /> element", () => {

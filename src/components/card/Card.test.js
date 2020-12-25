@@ -9,7 +9,11 @@ describe("<Card />", () => {
   const children = <p>Test</p>;
 
   beforeEach(() => {
-    wrapper = shallow(<Card isActive={false}>{children}</Card>);
+    wrapper = shallow(
+      <Card isEnabled={false} isActive={false}>
+        {children}
+      </Card>
+    );
   });
 
   it("should render a card and container <div /> elements", () => {
@@ -18,6 +22,14 @@ describe("<Card />", () => {
 
     expect(card).toHaveLength(1);
     expect(container).toHaveLength(1);
+  });
+
+  it("should render the card with the Enabled class when isEnabled is true", () => {
+    wrapper.setProps({ isEnabled: true });
+    const card = wrapper.find(`div.${css.Card}`);
+
+    expect(card).toHaveLength(1);
+    expect(card.hasClass(css.Enabled)).toEqual(true);
   });
 
   it("should render the card with the Active class when isActive is true", () => {
