@@ -2,9 +2,9 @@ import React from "react";
 import { shallow } from "enzyme";
 
 import css from "./Card.module.css";
-import Card from "./Card";
+import { Card } from "./Card";
 
-describe("<Menu />", () => {
+describe("<Card />", () => {
   let wrapper;
   const children = <p>Test</p>;
 

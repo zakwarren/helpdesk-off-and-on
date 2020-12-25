@@ -1,3 +1,2 @@
-import Card from "./card/Card";
-
-export { Card };
+export { Card } from "./card/Card";
+export { Issue } from "./issue/Issue";

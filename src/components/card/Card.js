@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import css from "./Card.module.css";
 
-const Card = ({ children }) => (
+export const Card = ({ children }) => (
   <div className={css.Card}>
     <div className={css.Container}>{children}</div>
   </div>
@@ -12,5 +12,3 @@ const Card = ({ children }) => (
 Card.propTypes = {
   children: PropTypes.element.isRequired,
 };
-
-export default Card;
