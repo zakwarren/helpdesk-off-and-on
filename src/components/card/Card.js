@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import css from "./Card.module.css";
 
 export const Card = (props) => {
-  const { isEnabled, isActive, children } = props;
+  const { isEnabled, isActive, onClick, children } = props;
 
   let classes = [css.Card];
   if (isEnabled) {
@@ -15,7 +15,7 @@ export const Card = (props) => {
   }
 
   return (
-    <div className={classes.join(" ")}>
+    <div className={classes.join(" ")} onClick={onClick}>
       <div className={css.Container}>{children}</div>
     </div>
   );
@@ -24,5 +24,6 @@ export const Card = (props) => {
 Card.propTypes = {
   isEnabled: PropTypes.bool.isRequired,
   isActive: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
   children: PropTypes.element.isRequired,
 };

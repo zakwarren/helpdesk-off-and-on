@@ -18,15 +18,15 @@ describe("game reducer", () => {
     expect(newState).toEqual(initialState);
   });
 
-  it("should return the customer and issue", () => {
+  it("should return the selected ticket", () => {
     const action = {
       type: actionTypes.SET_SELECTED_TICKET,
-      selectedTicket: "test",
+      ticket: "test",
     };
     const newState = reducer(initialState, action);
 
     expect(newState).not.toEqual(initialState);
-    expect(newState.selectedTicket).toEqual(action.selectedTicket);
+    expect(newState.selectedTicket).toEqual(action.ticket);
   });
 
   it("should return the closed ticket", () => {

@@ -12,10 +12,13 @@ describe("<Issue />", () => {
   const customer = "Test";
   const issueType = "test";
   const issue = "Testing";
+  const onClick = jest.fn;
 
   beforeEach(() => {
     wrapper = shallow(
-      <Issue {...{ isEnabled, isActive, customer, issueType, issue }} />
+      <Issue
+        {...{ isEnabled, isActive, customer, issueType, issue, onClick }}
+      />
     );
   });
 

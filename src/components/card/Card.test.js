@@ -10,7 +10,7 @@ describe("<Card />", () => {
 
   beforeEach(() => {
     wrapper = shallow(
-      <Card isEnabled={false} isActive={false}>
+      <Card isEnabled={false} isActive={false} onClick={jest.fn}>
         {children}
       </Card>
     );

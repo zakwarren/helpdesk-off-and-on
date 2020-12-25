@@ -36,7 +36,7 @@ const openTicket = (state, action) => {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SET_SELECTED_TICKET:
-      return updateObject(state, { selectedTicket: action.selectedTicket });
+      return updateObject(state, { selectedTicket: action.ticket });
     case actionTypes.CLOSE_TICKET:
       return closeTicket(state, action);
     case actionTypes.OPEN_TICKET:
