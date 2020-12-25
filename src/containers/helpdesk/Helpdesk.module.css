@@ -1,0 +1,48 @@
+.IssueTray {
+  padding: 1rem;
+  height: 80vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.Controls {
+  padding: 1rem;
+  height: 20vh;
+  border-top: 0.2rem solid #2a9d8f;
+  border-color: var(--theme);
+  box-shadow: 0 -0.24rem 0.5rem 0 rgba(0, 0, 0, 0.2);
+}
+
+.Controls h3 {
+  margin: 0 0 0.5rem;
+}
+
+.OptionBtns {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.OptionBtns button {
+  margin: 0.25rem;
+  padding: 0.75rem 0.5rem;
+  background-color: #2a9d8f;
+  background-color: var(--theme);
+  border: none;
+  border-radius: 0.4rem;
+  outline: none;
+  color: #fdfffc;
+  color: var(--white);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.OptionBtns button:hover {
+  background-color: #1e7167;
+  background-color: var(--theme-dark);
+}
