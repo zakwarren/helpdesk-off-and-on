@@ -2,8 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import * as actions from "../../store/actions";
 import css from "./Helpdesk.module.css";
+import * as actions from "../../store/actions";
+import { useOpenTicket } from "../../hooks";
 import { Issue } from "../../components";
 
 export const Helpdesk = (props) => {
@@ -12,14 +13,11 @@ export const Helpdesk = (props) => {
     openTickets,
     closedTickets,
     selectedTicket,
-    onOpenTicket,
     onSelectTicket,
     onCloseTicket,
   } = props;
 
-  if (openTickets.length === 0) {
-    onOpenTicket();
-  }
+  useOpenTicket();
 
   let optionBtns = null;
   if (selectedTicket) {
@@ -41,15 +39,6 @@ export const Helpdesk = (props) => {
   return (
     <>
       <section className={css.IssueTray}>
-        {closedTickets.map((ticket) => (
-          <Issue
-            key={ticket.id}
-            isEnabled={false}
-            isActive={false}
-            {...ticket}
-            onClick={() => {}}
-          />
-        ))}
         {openTickets.map((ticket) => (
           <Issue
             key={ticket.id}
@@ -57,6 +46,15 @@ export const Helpdesk = (props) => {
             isActive={ticket.id === selectedTicket?.id}
             {...ticket}
             onClick={() => onSelectTicket(ticket)}
+          />
+        ))}
+        {closedTickets.map((ticket) => (
+          <Issue
+            key={ticket.id}
+            isEnabled={false}
+            isActive={false}
+            {...ticket}
+            onClick={() => {}}
           />
         ))}
       </section>
@@ -92,7 +90,6 @@ Helpdesk.propTypes = {
     issueType: PropTypes.string.isRequired,
     issue: PropTypes.string.isRequired,
   }),
-  onOpenTicket: PropTypes.func.isRequired,
   onSelectTicket: PropTypes.func.isRequired,
   onCloseTicket: PropTypes.func.isRequired,
 };
@@ -108,7 +105,6 @@ export const mapStateToProps = (state) => {
 
 export const mapDispatchToProps = (dispatch) => {
   return {
-    onOpenTicket: () => dispatch(actions.openRandomTicket()),
     onSelectTicket: (ticket) => dispatch(actions.setSelectedTicket(ticket)),
     onCloseTicket: (ticket) => dispatch(actions.closeTicket(ticket)),
   };

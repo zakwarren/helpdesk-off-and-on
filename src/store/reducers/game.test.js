@@ -7,6 +7,7 @@ describe("game reducer", () => {
     allIssues: {},
     allOptions: {},
     allDisasters: {},
+    maxId: 0,
     closedTickets: [],
     openTickets: [],
     selectedTicket: null,
@@ -55,5 +56,6 @@ describe("game reducer", () => {
 
     expect(newState).not.toEqual(initialState);
     expect(newState.openTickets).toEqual([{ id: 1, ...action.ticket }]);
+    expect(newState.maxId).toEqual(1);
   });
 });

@@ -8,6 +8,7 @@ const initialState = {
   allIssues: ISSUES,
   allOptions: OPTIONS,
   allDisasters: DISASTERS,
+  maxId: 0,
   closedTickets: [],
   openTickets: [],
   selectedTicket: null,
@@ -25,12 +26,11 @@ const closeTicket = (state, action) => {
 };
 
 const openTicket = (state, action) => {
-  const allIds = state.openTickets.map((t) => t.id);
-  const newId = allIds.length > 0 ? Math.max.apply(null, allIds) + 1 : 1;
+  const maxId = state.maxId + 1;
 
-  const ticket = { ...action.ticket, id: newId };
+  const ticket = { ...action.ticket, id: maxId };
   const openTickets = [...state.openTickets, ticket];
-  return updateObject(state, { openTickets });
+  return updateObject(state, { openTickets, maxId });
 };
 
 const reducer = (state = initialState, action) => {

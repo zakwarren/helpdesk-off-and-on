@@ -1,6 +1,18 @@
 .Issue {
   width: 100%;
   color: inherit;
+  animation-name: arrive;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes arrive {
+  from {
+    margin-top: -100vh;
+  }
+  to {
+    margin-top: 0;
+  }
 }
 
 .Issue .Type {

@@ -1,6 +1,6 @@
 import * as actionTypes from "../actions/actionTypes";
 import { updateObject } from "../../shared/utilities";
-import { MAX_EXPERIENCE, LEVEL_BOUNDARIES } from "../../shared/config";
+import { MAX_EXPERIENCE, getSkills } from "../../shared/config";
 
 const initialState = {
   username: "Newbie",
@@ -33,14 +33,7 @@ const levelUp = (state, action) => {
   const charisma = bumpSkill(state.charisma);
   const chanceDisaster = reduceChance(state.chanceDisaster);
 
-  const bounds = Object.keys(LEVEL_BOUNDARIES);
-  const relevantBounds = bounds.filter((b) => +level < +b);
-  const maxBound = Math.min.apply(null, relevantBounds);
-  const boundToUse = isFinite(maxBound)
-    ? maxBound
-    : Math.max.apply(null, bounds);
-
-  const unlockedSkills = LEVEL_BOUNDARIES[boundToUse];
+  const unlockedSkills = getSkills(level);
   const skills = {};
   for (const s of unlockedSkills) {
     skills[s] = bumpSkill(state.skills[s]);
