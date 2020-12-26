@@ -9,6 +9,7 @@ describe("game reducer", () => {
     allDisasters: {},
     maxId: 0,
     closedTickets: [],
+    failedTickets: [],
     openTickets: [],
     selectedTicket: null,
   };
@@ -59,7 +60,7 @@ describe("game reducer", () => {
     expect(newState.maxId).toEqual(1);
   });
 
-  it("should return the updated open tickets with reduced patience", () => {
+  it("should return the updated open tickets with reduced patience when patience > 0", () => {
     const ticket = { id: 1, patience: 50 };
     const charisma = 90;
     const state = {
@@ -74,5 +75,24 @@ describe("game reducer", () => {
     expect(newState.openTickets).toHaveLength(1);
     expect(newState.openTickets[0].patience).toEqual(40);
     expect(newState.selectedTicket).toBeNull();
+    expect(newState.failedTickets).toHaveLength(0);
+  });
+
+  it("should return as a failed ticket when patience is <= 0", () => {
+    const ticket = { id: 1, patience: 10 };
+    const charisma = 80;
+    const state = {
+      ...initialState,
+      openTickets: [ticket],
+      selectedTicket: ticket,
+    };
+    const action = { type: actionTypes.FAIL_TICKET, ticket, charisma };
+    const newState = reducer(state, action);
+
+    expect(newState).not.toEqual(state);
+    expect(newState.openTickets).toHaveLength(0);
+    expect(newState.selectedTicket).toBeNull();
+    expect(newState.failedTickets).toHaveLength(1);
+    expect(newState.failedTickets[0].id).toEqual(1);
   });
 });

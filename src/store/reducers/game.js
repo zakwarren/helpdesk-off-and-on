@@ -10,6 +10,7 @@ const initialState = {
   allDisasters: DISASTERS,
   maxId: 0,
   closedTickets: [],
+  failedTickets: [],
   openTickets: [],
   selectedTicket: null,
 };
@@ -36,15 +37,24 @@ const openTicket = (state, action) => {
 const failTicket = (state, action) => {
   const patience = action.ticket.patience - (100 - action.charisma);
   const ticket = updateObject(action.ticket, { patience });
-  const openTickets = state.openTickets.map((t) => {
-    if (t.id === ticket.id) {
-      return ticket;
-    } else {
-      return t;
-    }
-  });
-
-  return updateObject(state, { openTickets, selectedTicket: null });
+  if (patience > 0) {
+    const openTickets = state.openTickets.map((t) => {
+      if (t.id === ticket.id) {
+        return ticket;
+      } else {
+        return t;
+      }
+    });
+    return updateObject(state, { openTickets, selectedTicket: null });
+  } else {
+    const openTickets = state.openTickets.filter((t) => t.id !== ticket.id);
+    const failedTickets = [...state.closedTickets, ticket];
+    return updateObject(state, {
+      openTickets,
+      failedTickets,
+      selectedTicket: null,
+    });
+  }
 };
 
 const reducer = (state = initialState, action) => {
