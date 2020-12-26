@@ -1,4 +1,13 @@
-export const SKILLS = {
+export const STAGES = {
+  setup: "setup",
+  tutorial: "tutorial",
+  helpdesk: "helpdesk",
+  review: "review",
+};
+
+export const MAX_EXPERIENCE = 100;
+
+const SKILLS = {
   password: "password",
   hardware: "hardware",
   software: "software",
@@ -6,8 +15,6 @@ export const SKILLS = {
   network: "network",
   server: "server",
 };
-
-export const MAX_EXPERIENCE = 100;
 
 export const getSkills = (level) => {
   if (level < 10) {

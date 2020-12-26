@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import css from "./Helpdesk.module.css";
 import * as actions from "../../store/actions";
 import { useOpenTicket, useOptions } from "../../hooks";
-import { Issue } from "../../components";
+import { IssueTray } from "../../components";
 
 export const Helpdesk = (props) => {
   const {
@@ -18,6 +18,7 @@ export const Helpdesk = (props) => {
     onCloseTicket,
   } = props;
 
+  const [showOpen, setShowOpen] = useState(true);
   useOpenTicket();
   const options = useOptions(selectedTicket?.issueType);
 
@@ -48,27 +49,28 @@ export const Helpdesk = (props) => {
 
   return (
     <>
-      <section className={css.IssueTray}>
-        {openTickets.map((ticket) => (
-          <Issue
-            key={ticket.id}
-            isEnabled
-            isActive={ticket.id === selectedTicket?.id}
-            {...ticket}
-            onClick={() => onSelectTicket(ticket)}
-          />
-        ))}
-        {closedTickets.map((ticket) => (
-          <Issue
-            key={ticket.id}
-            isEnabled={false}
-            isActive={false}
-            {...ticket}
-            onClick={() => {}}
-          />
-        ))}
-      </section>
+      {showOpen ? (
+        <IssueTray
+          tickets={openTickets}
+          isEnabled
+          selectedTicket={selectedTicket}
+          onClick={onSelectTicket}
+        />
+      ) : (
+        <IssueTray
+          tickets={closedTickets}
+          isEnabled={false}
+          selectedTicket={null}
+          onClick={() => {}}
+        />
+      )}
       <section className={css.Controls}>
+        <button
+          className={css.SwitchBtn}
+          onClick={() => setShowOpen((show) => !show)}
+        >
+          {showOpen ? "Show Closed Tickets" : "Show Open Tickets"}
+        </button>
         <h3>Options</h3>
         {optionBtns}
       </section>

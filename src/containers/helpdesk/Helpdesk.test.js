@@ -4,6 +4,7 @@ import * as redux from "react-redux";
 
 import css from "./Helpdesk.module.css";
 import { mapStateToProps, mapDispatchToProps, Helpdesk } from "./Helpdesk";
+import { IssueTray } from "../../components/";
 
 describe("<Helpdesk />", () => {
   describe("mapStateToProps", () => {
@@ -40,7 +41,9 @@ describe("<Helpdesk />", () => {
     let wrapper;
     const skills = {};
     const closedTickets = [];
-    const openTickets = [];
+    const openTickets = [
+      { id: 1, customer: "Test", issueType: "test", issue: "Test" },
+    ];
     const selectedTicket = null;
     const onAddExperience = jest.fn;
     const onSelectTicket = jest.fn;
@@ -67,12 +70,32 @@ describe("<Helpdesk />", () => {
       );
     });
 
-    it("should render two <section /> elements with the correct classes", () => {
-      const sections = wrapper.find("section");
+    it("should render an <IssueTray /> element", () => {
+      const tray = wrapper.find(IssueTray);
 
-      expect(sections).toHaveLength(2);
-      expect(sections.get(0).props.className).toEqual(css.IssueTray);
-      expect(sections.get(1).props.className).toEqual(css.Controls);
+      expect(tray).toHaveLength(1);
+    });
+
+    it("should render a <section /> element with the correct class", () => {
+      const section = wrapper.find("section");
+
+      expect(section).toHaveLength(1);
+      expect(section.hasClass(css.Controls)).toEqual(true);
+    });
+
+    it("should render a <h3 /> element", () => {
+      const h3 = wrapper.find("h3");
+
+      expect(h3).toHaveLength(1);
+      expect(h3.text()).toEqual("Options");
+    });
+
+    it("should render a <button /> element with the correct class", () => {
+      const btn = wrapper.find("button");
+
+      expect(btn).toHaveLength(1);
+      expect(btn.hasClass(css.SwitchBtn)).toEqual(true);
+      expect(btn.text()).toEqual("Show Closed Tickets");
     });
   });
 });

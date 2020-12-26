@@ -1,2 +1,2 @@
 export { Card } from "./card/Card";
-export { Issue } from "./issue/Issue";
+export { IssueTray } from "./issueTray/IssueTray";

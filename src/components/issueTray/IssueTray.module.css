@@ -1,3 +1,12 @@
+.IssueTray {
+  padding: 1rem;
+  height: 80vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-start;
+}
+
 .Issue {
   width: 100%;
   background-color: var(--white);
