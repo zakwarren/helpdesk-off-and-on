@@ -14,11 +14,11 @@ export const Helpdesk = (props) => {
     selectedTicket,
     onOpenTicket,
     onSelectTicket,
+    onCloseTicket,
   } = props;
 
   if (openTickets.length === 0) {
     onOpenTicket();
-    return null;
   }
 
   let optionBtns = null;
@@ -30,7 +30,9 @@ export const Helpdesk = (props) => {
     optionBtns = (
       <div className={css.OptionBtns}>
         {options.map((opt, index) => (
-          <button key={index}>{opt}</button>
+          <button key={index} onClick={() => onCloseTicket(selectedTicket)}>
+            {opt}
+          </button>
         ))}
       </div>
     );

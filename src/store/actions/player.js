@@ -6,3 +6,10 @@ export const setUsername = (username) => {
     username,
   };
 };
+
+export const addExperience = (experience) => {
+  return {
+    type: actionTypes.ADD_EXPERIENCE,
+    experience,
+  };
+};
