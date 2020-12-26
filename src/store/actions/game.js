@@ -18,10 +18,13 @@ export const openTicket = (customer, issueType, issue) => {
 export const openRandomTicket = () => {
   return (dispatch, getState) => {
     const { allNames, allIssues } = getState().game;
+    const { skills } = getState().player;
+    const availableSkills = Object.keys(skills);
 
     const customer = getRandomArrayItem(allNames);
     const types = Object.keys(allIssues);
-    const issueType = getRandomArrayItem(types);
+    const availableTypes = types.filter((t) => availableSkills.includes(t));
+    const issueType = getRandomArrayItem(availableTypes);
     const issue = getRandomArrayItem(allIssues[issueType]);
 
     dispatch(openTicket(customer, issueType, issue));

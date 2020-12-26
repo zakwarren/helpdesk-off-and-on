@@ -11,6 +11,8 @@ export const useOpenTicket = () => {
   const level = useSelector((state) => state.player.level);
 
   useEffect(() => {
+    dispatch(openRandomTicket());
+
     let ticker = null;
     const time = getTimeBetweenTickets(level);
 
