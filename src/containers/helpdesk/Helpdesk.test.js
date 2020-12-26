@@ -11,6 +11,7 @@ describe("<Helpdesk />", () => {
     it("should map the state to props correctly", () => {
       const player = {
         skills: {},
+        charisma: 1,
       };
       const game = {
         openTickets: [],
@@ -20,6 +21,7 @@ describe("<Helpdesk />", () => {
       const componentState = mapStateToProps(appState);
 
       expect(componentState.skills).toEqual(player.skills);
+      expect(componentState.charisma).toEqual(player.charisma);
       expect(componentState.openTickets).toEqual(game.openTickets);
       expect(componentState.selectedTicket).toEqual(game.selectedTicket);
     });
@@ -32,6 +34,8 @@ describe("<Helpdesk />", () => {
       expect(typeof componentDispatch.onAddExperience).toBe("function");
       expect(typeof componentDispatch.onSelectTicket).toBe("function");
       expect(typeof componentDispatch.onCloseTicket).toBe("function");
+      expect(typeof componentDispatch.onFailTicket).toBe("function");
+      expect(typeof componentDispatch.onEndDay).toBe("function");
     });
   });
 
@@ -52,6 +56,8 @@ describe("<Helpdesk />", () => {
     const onAddExperience = jest.fn;
     const onSelectTicket = jest.fn;
     const onCloseTicket = jest.fn;
+    const onFailTicket = jest.fn;
+    const onEndDay = jest.fn;
 
     beforeAll(() => {
       jest.spyOn(redux, "useDispatch").mockImplementation(jest.fn);
@@ -68,6 +74,8 @@ describe("<Helpdesk />", () => {
             onAddExperience,
             onSelectTicket,
             onCloseTicket,
+            onFailTicket,
+            onEndDay,
           }}
         />
       );

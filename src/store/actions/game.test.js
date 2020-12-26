@@ -2,6 +2,14 @@ import * as actionTypes from "./actionTypes";
 import * as actions from "./game";
 
 describe("game actions", () => {
+  it("should return set stage and the stage", () => {
+    const stage = "test";
+    const action = actions.setStage(stage);
+
+    expect(action.type).toEqual(actionTypes.SET_STAGE);
+    expect(action.stage).toEqual(stage);
+  });
+
   it("should return set selected ticket and the ticket", () => {
     const ticket = { id: 1 };
     const action = actions.setSelectedTicket(ticket);

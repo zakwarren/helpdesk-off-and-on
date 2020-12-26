@@ -1,4 +1,4 @@
 import Menu from "./menu/Menu";
-import Helpdesk from "./helpdesk/Helpdesk";
+import Game from "./game/Game";
 
-export { Menu, Helpdesk };
+export { Menu, Game };

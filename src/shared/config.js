@@ -3,6 +3,7 @@ export const STAGES = {
   tutorial: "tutorial",
   helpdesk: "helpdesk",
   review: "review",
+  yearReview: "yearReview",
 };
 
 export const MAX_EXPERIENCE = 100;

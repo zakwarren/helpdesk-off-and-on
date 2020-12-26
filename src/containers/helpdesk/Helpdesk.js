@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import css from "./Helpdesk.module.css";
 import * as actions from "../../store/actions";
 import { useOpenTicket, useOptions } from "../../hooks";
-import { DAY_LENGTH } from "../../shared/config";
+import { STAGES, DAY_LENGTH } from "../../shared/config";
 import { IssueTray } from "../../components";
 
 export const Helpdesk = (props) => {
@@ -18,6 +18,7 @@ export const Helpdesk = (props) => {
     onSelectTicket,
     onCloseTicket,
     onFailTicket,
+    onEndDay,
   } = props;
 
   useOpenTicket();
@@ -25,10 +26,10 @@ export const Helpdesk = (props) => {
 
   useEffect(() => {
     const day = setTimeout(() => {
-      console.log("Day ending...");
+      onEndDay();
     }, DAY_LENGTH);
     return () => clearTimeout(day);
-  }, []);
+  }, [onEndDay]);
 
   let optionBtns = null;
   if (selectedTicket) {
@@ -96,6 +97,7 @@ Helpdesk.propTypes = {
   onSelectTicket: PropTypes.func.isRequired,
   onCloseTicket: PropTypes.func.isRequired,
   onFailTicket: PropTypes.func.isRequired,
+  onEndDay: PropTypes.func.isRequired,
 };
 
 export const mapStateToProps = (state) => {
@@ -115,6 +117,7 @@ export const mapDispatchToProps = (dispatch) => {
     onCloseTicket: (ticket) => dispatch(actions.closeTicket(ticket)),
     onFailTicket: (ticket, charisma) =>
       dispatch(actions.failTicket(ticket, charisma)),
+    onEndDay: () => dispatch(actions.setStage(STAGES.review)),
   };
 };
 

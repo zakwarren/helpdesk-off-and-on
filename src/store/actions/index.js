@@ -1,4 +1,5 @@
 export {
+  setStage,
   setSelectedTicket,
   openRandomTicket,
   closeTicket,

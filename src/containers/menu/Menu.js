@@ -32,7 +32,7 @@ export const Menu = ({ username }) => (
       </li>
       <li tabIndex="0">
         <FontAwesomeIcon icon={faUsers} />
-        <span>Customers</span>
+        <span>Helpdesk</span>
       </li>
       <li tabIndex="0">
         <FontAwesomeIcon icon={faCog} />

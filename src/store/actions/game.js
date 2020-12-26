@@ -1,6 +1,13 @@
 import * as actionTypes from "./actionTypes";
 import { getRandomArrayItem, weightedRandom } from "../../shared/utilities";
 
+export const setStage = (stage) => {
+  return {
+    type: actionTypes.SET_STAGE,
+    stage,
+  };
+};
+
 export const setSelectedTicket = (ticket) => {
   return {
     type: actionTypes.SET_SELECTED_TICKET,

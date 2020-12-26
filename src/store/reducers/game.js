@@ -2,8 +2,10 @@ import * as actionTypes from "../actions/actionTypes";
 import { updateObject } from "../../shared/utilities";
 
 import { NAMES, ISSUES, OPTIONS, DISASTERS } from "../data";
+import { STAGES } from "../../shared/config";
 
 const initialState = {
+  stage: STAGES.setup,
   allNames: NAMES,
   allIssues: ISSUES,
   allOptions: OPTIONS,
@@ -59,6 +61,8 @@ const failTicket = (state, action) => {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.SET_STAGE:
+      return updateObject(state, { stage: action.stage });
     case actionTypes.SET_SELECTED_TICKET:
       return updateObject(state, { selectedTicket: action.ticket });
     case actionTypes.CLOSE_TICKET:

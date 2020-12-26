@@ -1,8 +1,10 @@
 import * as actionTypes from "../actions/actionTypes";
 import reducer from "./game";
+import { STAGES } from "../../shared/config";
 
 describe("game reducer", () => {
   const initialState = {
+    stage: STAGES.setup,
     allNames: [],
     allIssues: {},
     allOptions: {},
@@ -18,6 +20,14 @@ describe("game reducer", () => {
     const newState = reducer(initialState, { type: "test" });
 
     expect(newState).toEqual(initialState);
+  });
+
+  it("should return the stage", () => {
+    const action = { type: actionTypes.SET_STAGE, stage: "test" };
+    const newState = reducer(initialState, action);
+
+    expect(newState).not.toEqual(initialState);
+    expect(newState.stage).toEqual(action.stage);
   });
 
   it("should return the selected ticket", () => {
