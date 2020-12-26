@@ -30,6 +30,8 @@ IssueTray.propTypes = {
       customer: PropTypes.string.isRequired,
       issueType: PropTypes.string.isRequired,
       issue: PropTypes.string.isRequired,
+      experience: PropTypes.number.isRequired,
+      patience: PropTypes.number.isRequired,
     })
   ).isRequired,
   selectedTicket: PropTypes.exact({
@@ -37,6 +39,8 @@ IssueTray.propTypes = {
     customer: PropTypes.string.isRequired,
     issueType: PropTypes.string.isRequired,
     issue: PropTypes.string.isRequired,
+    experience: PropTypes.number.isRequired,
+    patience: PropTypes.number.isRequired,
   }),
   isEnabled: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,

@@ -58,4 +58,21 @@ describe("game reducer", () => {
     expect(newState.openTickets).toEqual([{ id: 1, ...action.ticket }]);
     expect(newState.maxId).toEqual(1);
   });
+
+  it("should return the updated open tickets with reduced patience", () => {
+    const ticket = { id: 1, patience: 50 };
+    const charisma = 90;
+    const state = {
+      ...initialState,
+      openTickets: [ticket],
+      selectedTicket: ticket,
+    };
+    const action = { type: actionTypes.FAIL_TICKET, ticket, charisma };
+    const newState = reducer(state, action);
+
+    expect(newState).not.toEqual(state);
+    expect(newState.openTickets).toHaveLength(1);
+    expect(newState.openTickets[0].patience).toEqual(40);
+    expect(newState.selectedTicket).toBeNull();
+  });
 });

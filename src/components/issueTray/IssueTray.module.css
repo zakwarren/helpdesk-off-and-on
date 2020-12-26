@@ -1,7 +1,7 @@
 .IssueTray {
   padding: 1rem;
   height: 80vh;
-  overflow-y: auto;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column-reverse;
   justify-content: flex-start;

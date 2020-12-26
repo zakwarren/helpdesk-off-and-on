@@ -6,6 +6,7 @@ export const STAGES = {
 };
 
 export const MAX_EXPERIENCE = 100;
+export const DAY_LENGTH = 120000; // 2 minutes
 
 const SKILLS = {
   password: "password",

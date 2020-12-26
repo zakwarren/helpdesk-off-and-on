@@ -1,2 +1,7 @@
-export { setSelectedTicket, openRandomTicket, closeTicket } from "./game";
+export {
+  setSelectedTicket,
+  openRandomTicket,
+  closeTicket,
+  failTicket,
+} from "./game";
 export { setUsername, addExperience } from "./player";

@@ -22,10 +22,6 @@
   background-color: var(--theme-dark);
 }
 
-.Controls .SwitchBtn {
-  float: right;
-}
-
 .Controls h3 {
   margin: 0 0 0.5rem;
 }

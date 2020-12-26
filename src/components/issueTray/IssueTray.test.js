@@ -12,6 +12,8 @@ describe("<IssueTray />", () => {
     customer: "Test",
     issueType: "test",
     issue: "testing",
+    experience: 1,
+    patience: 1,
   };
   const tickets = [testTicket];
   const selectedTicket = null;

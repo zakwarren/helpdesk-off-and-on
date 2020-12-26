@@ -1,26 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import css from "./Helpdesk.module.css";
 import * as actions from "../../store/actions";
 import { useOpenTicket, useOptions } from "../../hooks";
+import { DAY_LENGTH } from "../../shared/config";
 import { IssueTray } from "../../components";
 
 export const Helpdesk = (props) => {
   const {
     skills,
+    charisma,
     openTickets,
-    closedTickets,
     selectedTicket,
     onAddExperience,
     onSelectTicket,
     onCloseTicket,
+    onFailTicket,
   } = props;
 
-  const [showOpen, setShowOpen] = useState(true);
   useOpenTicket();
   const options = useOptions(selectedTicket?.issueType);
+
+  useEffect(() => {
+    const day = setTimeout(() => {
+      console.log("Day ending...");
+    }, DAY_LENGTH);
+    return () => clearTimeout(day);
+  }, []);
 
   let optionBtns = null;
   if (selectedTicket) {
@@ -33,10 +41,10 @@ export const Helpdesk = (props) => {
             key={index}
             onClick={() => {
               if (skill > opt.difficulty) {
-                onAddExperience(10);
+                onAddExperience(selectedTicket.experience);
                 onCloseTicket(selectedTicket);
               } else {
-                onSelectTicket(null);
+                onFailTicket(selectedTicket, charisma);
               }
             }}
           >
@@ -49,28 +57,13 @@ export const Helpdesk = (props) => {
 
   return (
     <>
-      {showOpen ? (
-        <IssueTray
-          tickets={openTickets}
-          isEnabled
-          selectedTicket={selectedTicket}
-          onClick={onSelectTicket}
-        />
-      ) : (
-        <IssueTray
-          tickets={closedTickets}
-          isEnabled={false}
-          selectedTicket={null}
-          onClick={() => {}}
-        />
-      )}
+      <IssueTray
+        tickets={openTickets}
+        isEnabled
+        selectedTicket={selectedTicket}
+        onClick={onSelectTicket}
+      />
       <section className={css.Controls}>
-        <button
-          className={css.SwitchBtn}
-          onClick={() => setShowOpen((show) => !show)}
-        >
-          {showOpen ? "Show Closed Tickets" : "Show Open Tickets"}
-        </button>
         <h3>Options</h3>
         {optionBtns}
       </section>
@@ -80,20 +73,15 @@ export const Helpdesk = (props) => {
 
 Helpdesk.propTypes = {
   skills: PropTypes.object.isRequired,
-  closedTickets: PropTypes.arrayOf(
-    PropTypes.exact({
-      id: PropTypes.number.isRequired,
-      customer: PropTypes.string.isRequired,
-      issueType: PropTypes.string.isRequired,
-      issue: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+  charisma: PropTypes.number.isRequired,
   openTickets: PropTypes.arrayOf(
     PropTypes.exact({
       id: PropTypes.number.isRequired,
       customer: PropTypes.string.isRequired,
       issueType: PropTypes.string.isRequired,
       issue: PropTypes.string.isRequired,
+      experience: PropTypes.number.isRequired,
+      patience: PropTypes.number.isRequired,
     })
   ).isRequired,
   selectedTicket: PropTypes.exact({
@@ -101,16 +89,19 @@ Helpdesk.propTypes = {
     customer: PropTypes.string.isRequired,
     issueType: PropTypes.string.isRequired,
     issue: PropTypes.string.isRequired,
+    experience: PropTypes.number.isRequired,
+    patience: PropTypes.number.isRequired,
   }),
   onAddExperience: PropTypes.func.isRequired,
   onSelectTicket: PropTypes.func.isRequired,
   onCloseTicket: PropTypes.func.isRequired,
+  onFailTicket: PropTypes.func.isRequired,
 };
 
 export const mapStateToProps = (state) => {
   return {
     skills: state.player.skills,
-    closedTickets: state.game.closedTickets,
+    charisma: state.player.charisma,
     openTickets: state.game.openTickets,
     selectedTicket: state.game.selectedTicket,
   };
@@ -122,6 +113,8 @@ export const mapDispatchToProps = (dispatch) => {
       dispatch(actions.addExperience(experience)),
     onSelectTicket: (ticket) => dispatch(actions.setSelectedTicket(ticket)),
     onCloseTicket: (ticket) => dispatch(actions.closeTicket(ticket)),
+    onFailTicket: (ticket, charisma) =>
+      dispatch(actions.failTicket(ticket, charisma)),
   };
 };
 

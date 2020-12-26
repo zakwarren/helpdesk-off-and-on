@@ -33,6 +33,20 @@ const openTicket = (state, action) => {
   return updateObject(state, { openTickets, maxId });
 };
 
+const failTicket = (state, action) => {
+  const patience = action.ticket.patience - (100 - action.charisma);
+  const ticket = updateObject(action.ticket, { patience });
+  const openTickets = state.openTickets.map((t) => {
+    if (t.id === ticket.id) {
+      return ticket;
+    } else {
+      return t;
+    }
+  });
+
+  return updateObject(state, { openTickets, selectedTicket: null });
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SET_SELECTED_TICKET:
@@ -41,6 +55,8 @@ const reducer = (state = initialState, action) => {
       return closeTicket(state, action);
     case actionTypes.OPEN_TICKET:
       return openTicket(state, action);
+    case actionTypes.FAIL_TICKET:
+      return failTicket(state, action);
     default:
       return state;
   }

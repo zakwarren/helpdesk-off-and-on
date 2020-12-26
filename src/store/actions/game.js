@@ -1,5 +1,5 @@
 import * as actionTypes from "./actionTypes";
-import { getRandomArrayItem } from "../../shared/utilities";
+import { getRandomArrayItem, weightedRandom } from "../../shared/utilities";
 
 export const setSelectedTicket = (ticket) => {
   return {
@@ -8,10 +8,16 @@ export const setSelectedTicket = (ticket) => {
   };
 };
 
-export const openTicket = (customer, issueType, issue) => {
+export const openTicket = (
+  customer,
+  issueType,
+  issue,
+  experience,
+  patience
+) => {
   return {
     type: actionTypes.OPEN_TICKET,
-    ticket: { customer, issueType, issue },
+    ticket: { customer, issueType, issue, experience, patience },
   };
 };
 
@@ -26,8 +32,10 @@ export const openRandomTicket = () => {
     const availableTypes = types.filter((t) => availableSkills.includes(t));
     const issueType = getRandomArrayItem(availableTypes);
     const issue = getRandomArrayItem(allIssues[issueType]);
+    const experience = weightedRandom(10 * 2, 2);
+    const patience = weightedRandom(99, 4);
 
-    dispatch(openTicket(customer, issueType, issue));
+    dispatch(openTicket(customer, issueType, issue, experience, patience));
   };
 };
 
@@ -35,5 +43,13 @@ export const closeTicket = (ticket) => {
   return {
     type: actionTypes.CLOSE_TICKET,
     ticket,
+  };
+};
+
+export const failTicket = (ticket, charisma) => {
+  return {
+    type: actionTypes.FAIL_TICKET,
+    ticket,
+    charisma,
   };
 };

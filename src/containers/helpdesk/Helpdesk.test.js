@@ -13,7 +13,6 @@ describe("<Helpdesk />", () => {
         skills: {},
       };
       const game = {
-        closedTickets: [],
         openTickets: [],
         selectedTicket: [],
       };
@@ -21,7 +20,6 @@ describe("<Helpdesk />", () => {
       const componentState = mapStateToProps(appState);
 
       expect(componentState.skills).toEqual(player.skills);
-      expect(componentState.closedTickets).toEqual(game.closedTickets);
       expect(componentState.openTickets).toEqual(game.openTickets);
       expect(componentState.selectedTicket).toEqual(game.selectedTicket);
     });
@@ -40,9 +38,15 @@ describe("<Helpdesk />", () => {
   describe("display", () => {
     let wrapper;
     const skills = {};
-    const closedTickets = [];
     const openTickets = [
-      { id: 1, customer: "Test", issueType: "test", issue: "Test" },
+      {
+        id: 1,
+        customer: "Test",
+        issueType: "test",
+        issue: "Test",
+        experience: 1,
+        patience: 1,
+      },
     ];
     const selectedTicket = null;
     const onAddExperience = jest.fn;
@@ -59,7 +63,6 @@ describe("<Helpdesk />", () => {
         <Helpdesk
           {...{
             skills,
-            closedTickets,
             openTickets,
             selectedTicket,
             onAddExperience,
@@ -88,14 +91,6 @@ describe("<Helpdesk />", () => {
 
       expect(h3).toHaveLength(1);
       expect(h3.text()).toEqual("Options");
-    });
-
-    it("should render a <button /> element with the correct class", () => {
-      const btn = wrapper.find("button");
-
-      expect(btn).toHaveLength(1);
-      expect(btn.hasClass(css.SwitchBtn)).toEqual(true);
-      expect(btn.text()).toEqual("Show Closed Tickets");
     });
   });
 });
