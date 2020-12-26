@@ -9,4 +9,12 @@ describe("player actions", () => {
     expect(action.type).toEqual(actionTypes.SET_USERNAME);
     expect(action.username).toEqual(username);
   });
+
+  it("should return add experience and experience", () => {
+    const experience = 10;
+    const action = actions.addExperience(experience);
+
+    expect(action.type).toEqual(actionTypes.ADD_EXPERIENCE);
+    expect(action.experience).toEqual(experience);
+  });
 });
