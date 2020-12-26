@@ -1,4 +1,4 @@
-import { updateObject, getRandomArrayItem } from "./utilities";
+import { updateObject, getRandomArrayItem, weightedRandom } from "./utilities";
 
 describe("shared utility functions", () => {
   describe("updateObject", () => {
@@ -29,5 +29,13 @@ describe("shared utility functions", () => {
       expect(typeof item).toBe("string");
       expect(array.includes(item)).toEqual(true);
     });
+  });
+
+  describe("weightedRandom", () => {
+    const result = weightedRandom(100, 4);
+
+    expect(typeof result).toBe("number");
+    expect(result).toBeGreaterThanOrEqual(0);
+    expect(result).toBeLessThanOrEqual(100);
   });
 });
