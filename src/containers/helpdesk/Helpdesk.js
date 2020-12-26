@@ -4,32 +4,42 @@ import { connect } from "react-redux";
 
 import css from "./Helpdesk.module.css";
 import * as actions from "../../store/actions";
-import { useOpenTicket } from "../../hooks";
+import { useOpenTicket, useOptions } from "../../hooks";
 import { Issue } from "../../components";
 
 export const Helpdesk = (props) => {
   const {
-    allOptions,
+    skills,
     openTickets,
     closedTickets,
     selectedTicket,
+    onAddExperience,
     onSelectTicket,
     onCloseTicket,
   } = props;
 
   useOpenTicket();
+  const options = useOptions(selectedTicket?.issueType);
 
   let optionBtns = null;
   if (selectedTicket) {
-    const shuffledOpts = allOptions[selectedTicket.issueType].sort(
-      () => 0.5 - Math.random()
-    );
-    const options = shuffledOpts.slice(0, 4);
+    const skill = skills[selectedTicket.issueType];
+
     optionBtns = (
       <div className={css.OptionBtns}>
         {options.map((opt, index) => (
-          <button key={index} onClick={() => onCloseTicket(selectedTicket)}>
-            {opt}
+          <button
+            key={index}
+            onClick={() => {
+              if (skill > opt.difficulty) {
+                onAddExperience(10);
+                onCloseTicket(selectedTicket);
+              } else {
+                onSelectTicket(null);
+              }
+            }}
+          >
+            {opt.text}
           </button>
         ))}
       </div>
@@ -67,7 +77,7 @@ export const Helpdesk = (props) => {
 };
 
 Helpdesk.propTypes = {
-  allOptions: PropTypes.object,
+  skills: PropTypes.object.isRequired,
   closedTickets: PropTypes.arrayOf(
     PropTypes.exact({
       id: PropTypes.number.isRequired,
@@ -90,13 +100,14 @@ Helpdesk.propTypes = {
     issueType: PropTypes.string.isRequired,
     issue: PropTypes.string.isRequired,
   }),
+  onAddExperience: PropTypes.func.isRequired,
   onSelectTicket: PropTypes.func.isRequired,
   onCloseTicket: PropTypes.func.isRequired,
 };
 
 export const mapStateToProps = (state) => {
   return {
-    allOptions: state.game.allOptions,
+    skills: state.player.skills,
     closedTickets: state.game.closedTickets,
     openTickets: state.game.openTickets,
     selectedTicket: state.game.selectedTicket,
@@ -105,6 +116,8 @@ export const mapStateToProps = (state) => {
 
 export const mapDispatchToProps = (dispatch) => {
   return {
+    onAddExperience: (experience) =>
+      dispatch(actions.addExperience(experience)),
     onSelectTicket: (ticket) => dispatch(actions.setSelectedTicket(ticket)),
     onCloseTicket: (ticket) => dispatch(actions.closeTicket(ticket)),
   };

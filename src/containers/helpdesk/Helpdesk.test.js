@@ -8,16 +8,21 @@ import { mapStateToProps, mapDispatchToProps, Helpdesk } from "./Helpdesk";
 describe("<Helpdesk />", () => {
   describe("mapStateToProps", () => {
     it("should map the state to props correctly", () => {
+      const player = {
+        skills: {},
+      };
       const game = {
-        allOptions: [],
         closedTickets: [],
         openTickets: [],
         selectedTicket: [],
       };
-      const appState = { game: game };
+      const appState = { player, game };
       const componentState = mapStateToProps(appState);
 
-      expect(componentState).toEqual(game);
+      expect(componentState.skills).toEqual(player.skills);
+      expect(componentState.closedTickets).toEqual(game.closedTickets);
+      expect(componentState.openTickets).toEqual(game.openTickets);
+      expect(componentState.selectedTicket).toEqual(game.selectedTicket);
     });
   });
 
@@ -25,6 +30,7 @@ describe("<Helpdesk />", () => {
     it("should map the dispatch functions to props correctly", () => {
       const componentDispatch = mapDispatchToProps(jest.fn);
 
+      expect(typeof componentDispatch.onAddExperience).toBe("function");
       expect(typeof componentDispatch.onSelectTicket).toBe("function");
       expect(typeof componentDispatch.onCloseTicket).toBe("function");
     });
@@ -32,10 +38,11 @@ describe("<Helpdesk />", () => {
 
   describe("display", () => {
     let wrapper;
-    const allOptions = {};
+    const skills = {};
     const closedTickets = [];
     const openTickets = [];
     const selectedTicket = null;
+    const onAddExperience = jest.fn;
     const onSelectTicket = jest.fn;
     const onCloseTicket = jest.fn;
 
@@ -48,10 +55,11 @@ describe("<Helpdesk />", () => {
       wrapper = shallow(
         <Helpdesk
           {...{
-            allOptions,
+            skills,
             closedTickets,
             openTickets,
             selectedTicket,
+            onAddExperience,
             onSelectTicket,
             onCloseTicket,
           }}

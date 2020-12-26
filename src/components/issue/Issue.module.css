@@ -1,5 +1,6 @@
 .Issue {
   width: 100%;
+  background-color: var(--white);
   color: inherit;
   animation-name: arrive;
   animation-duration: 3s;
