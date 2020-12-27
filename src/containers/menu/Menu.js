@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
@@ -26,18 +27,18 @@ export const Menu = ({ username }) => (
       <h2>{username}</h2>
     </header>
     <ul>
-      <li tabIndex="0">
+      <NavLink to="/dashboard" activeClassName={css.Active}>
         <FontAwesomeIcon icon={faTachometerAlt} />
         <span>Dashboard</span>
-      </li>
-      <li tabIndex="0">
+      </NavLink>
+      <NavLink to="/" activeClassName={css.Active}>
         <FontAwesomeIcon icon={faUsers} />
         <span>Helpdesk</span>
-      </li>
-      <li tabIndex="0">
+      </NavLink>
+      <NavLink to="/settings" activeClassName={css.Active}>
         <FontAwesomeIcon icon={faCog} />
         <span>Settings</span>
-      </li>
+      </NavLink>
     </ul>
   </nav>
 );

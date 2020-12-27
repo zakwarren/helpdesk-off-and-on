@@ -8,7 +8,7 @@ import { STAGES } from "../../shared/config";
 import Contract from "./contract/Contract";
 
 export const Setup = (props) => {
-  const { username, onEndDay } = props;
+  const { username, onSetStage } = props;
   const [step, setStep] = useState(0);
 
   let content = null;
@@ -33,10 +33,13 @@ export const Setup = (props) => {
             Would you like a full induction or would you prefer to get started
             straight away?
           </p>
-          <button className={css.Button} onClick={() => setStep(2)}>
+          <button
+            className={css.Button}
+            onClick={() => onSetStage(STAGES.tutorial)}
+          >
             Induction
           </button>
-          <button className={css.Button} onClick={() => setStep(3)}>
+          <button className={css.Button} onClick={() => setStep(2)}>
             Quick Start
           </button>
         </>
@@ -45,15 +48,11 @@ export const Setup = (props) => {
     case 2:
       content = (
         <>
-          <p>Tutorial...</p>
-        </>
-      );
-      break;
-    case 3:
-      content = (
-        <>
           <p>Well no time to waste. The helpdesk awaits you!</p>
-          <button className={css.Button} onClick={onEndDay}>
+          <button
+            className={css.Button}
+            onClick={() => onSetStage(STAGES.helpdesk)}
+          >
             Let's Go!
           </button>
         </>
@@ -74,7 +73,7 @@ export const Setup = (props) => {
 
 Setup.propTypes = {
   username: PropTypes.string,
-  onEndDay: PropTypes.func.isRequired,
+  onSetStage: PropTypes.func.isRequired,
 };
 
 export const mapStateToProps = (state) => {
@@ -85,7 +84,7 @@ export const mapStateToProps = (state) => {
 
 export const mapDispatchToProps = (dispatch) => {
   return {
-    onEndDay: () => dispatch(actions.setStage(STAGES.helpdesk)),
+    onSetStage: (stage) => dispatch(actions.setStage(stage)),
   };
 };
 

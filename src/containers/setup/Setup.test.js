@@ -22,17 +22,17 @@ describe("<Setup />", () => {
     it("should map the dispatch functions to props correctly", () => {
       const componentDispatch = mapDispatchToProps(jest.fn);
 
-      expect(typeof componentDispatch.onEndDay).toBe("function");
+      expect(typeof componentDispatch.onSetStage).toBe("function");
     });
   });
 
   describe("display", () => {
     let wrapper;
     const username = "Test";
-    const onEndDay = jest.fn;
+    const onSetStage = jest.fn;
 
     beforeEach(() => {
-      wrapper = shallow(<Setup {...{ username, onEndDay }} />);
+      wrapper = shallow(<Setup {...{ username, onSetStage }} />);
     });
 
     it("should render an <section /> element with the correct class", () => {

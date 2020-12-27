@@ -13,13 +13,13 @@ export const Game = (props) => {
     case STAGES.setup:
       return <Setup />;
     case STAGES.tutorial:
-      return null;
+      return <h2>Tutorial...</h2>;
     case STAGES.helpdesk:
       return <Helpdesk />;
     case STAGES.review:
-      return null;
+      return <h2>Daily Review...</h2>;
     case STAGES.yearReview:
-      return null;
+      return <h2>Yearly Review...</h2>;
     default:
       return null;
   }

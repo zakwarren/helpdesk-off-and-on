@@ -37,32 +37,33 @@
   margin: 0;
   padding: 0.5rem 0;
   list-style: none;
+  display: flex;
+  flex-direction: column;
 }
 
-.Menu ul li {
+.Menu ul a {
   padding: 0.5em 1em 0.5em 3em;
   color: var(--white);
   font-size: 0.95em;
   font-weight: regular;
+  text-decoration: none;
   transition: all 0.15s linear;
   cursor: pointer;
   filter: brightness(100);
 }
 
-.Menu ul li span {
+.Menu ul a span {
   padding-left: 1rem;
+  color: var(--white);
 }
 
-.Menu ul li:hover {
+.Menu ul a:hover,
+.Menu ul a.Active {
   background-color: var(--shadow);
 }
 
-.Menu ul li:focus {
+.Menu ul a:focus {
   outline: none;
-}
-
-.Menu ul li span {
-  color: var(--white);
 }
 
 .MenuButton {
@@ -78,7 +79,7 @@
     font-size: 2rem;
   }
 
-  .Menu ul li {
+  .Menu ul a {
     padding: 1rem;
     height: 3.75rem;
     position: relative;
@@ -86,7 +87,7 @@
   }
 
   .Menu .Header h2,
-  .Menu ul li span {
+  .Menu ul a span {
     margin: 0;
     min-width: 12.5rem;
     position: absolute;
@@ -100,12 +101,12 @@
   }
 
   .Menu .Header:hover h2,
-  .Menu ul li:hover span {
+  .Menu ul a:hover span {
     opacity: 1;
     transform: translate3d(0, -50%, 0);
   }
 
-  .Menu ul li span:before {
+  .Menu ul a span:before {
     content: "";
     width: 0;
     height: 0;
@@ -151,7 +152,7 @@
     transform: translate3d(-50%, -50%, 0);
   }
 
-  .Menu ul li {
+  .Menu ul a {
     padding: 1em 1em 1em 3em;
     font-size: 1.2em;
   }
