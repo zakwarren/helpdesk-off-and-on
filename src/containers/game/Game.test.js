@@ -5,6 +5,7 @@ import { mapStateToProps, Game } from "./Game";
 import { STAGES } from "../../shared/config";
 import Setup from "../setup/Setup";
 import Helpdesk from "../helpdesk/Helpdesk";
+import Review from "../review/Review";
 
 describe("<Game />", () => {
   describe("mapStateToProps", () => {
@@ -43,6 +44,13 @@ describe("<Game />", () => {
       const hd = wrapper.find(Helpdesk);
 
       expect(hd).toHaveLength(1);
+    });
+
+    it("should render a <Review /> element if stage is review", () => {
+      wrapper.setProps({ stage: STAGES.review });
+      const daily = wrapper.find(Review);
+
+      expect(daily).toHaveLength(1);
     });
   });
 });

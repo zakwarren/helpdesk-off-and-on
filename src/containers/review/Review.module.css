@@ -1,0 +1,8 @@
+.Review {
+  padding: 1rem;
+}
+
+.Speaker {
+  color: var(--grey);
+  font-style: italic;
+}

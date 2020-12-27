@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { STAGES } from "../../shared/config";
 import Setup from "../setup/Setup";
 import Helpdesk from "../helpdesk/Helpdesk";
+import Review from "../review/Review";
 
 export const Game = (props) => {
   const { stage } = props;
@@ -17,7 +18,7 @@ export const Game = (props) => {
     case STAGES.helpdesk:
       return <Helpdesk />;
     case STAGES.review:
-      return <h2>Daily Review...</h2>;
+      return <Review />;
     case STAGES.yearReview:
       return <h2>Yearly Review...</h2>;
     default:
