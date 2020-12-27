@@ -5,23 +5,6 @@
   box-shadow: 0 -0.24rem 0.5rem 0 var(--shadow);
 }
 
-.Controls button {
-  margin: 0.25rem;
-  padding: 0.75rem 0.5rem;
-  background-color: var(--theme);
-  border: none;
-  border-radius: 0.4rem;
-  outline: none;
-  color: var(--white);
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.Controls button:hover {
-  background-color: var(--theme-dark);
-}
-
 .Controls h3 {
   margin: 0 0 0.5rem;
 }

@@ -42,9 +42,7 @@ export const Contract = (props) => {
             ) : null}
           </div>
           <div className={css.Controls}>
-            <button className={css.Button} type="submit">
-              Sign Contract
-            </button>
+            <button type="submit">Sign Contract</button>
           </div>
         </Form>
       )}

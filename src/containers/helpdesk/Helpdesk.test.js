@@ -37,6 +37,7 @@ describe("<Helpdesk />", () => {
       expect(typeof componentDispatch.onSelectTicket).toBe("function");
       expect(typeof componentDispatch.onCloseTicket).toBe("function");
       expect(typeof componentDispatch.onFailTicket).toBe("function");
+      expect(typeof componentDispatch.onFailAllOpen).toBe("function");
       expect(typeof componentDispatch.onEndDay).toBe("function");
     });
   });
@@ -44,6 +45,7 @@ describe("<Helpdesk />", () => {
   describe("display", () => {
     let wrapper;
     const skills = {};
+    const charisma = 50;
     const openTickets = [
       {
         id: 1,
@@ -60,6 +62,7 @@ describe("<Helpdesk />", () => {
     const onSelectTicket = jest.fn;
     const onCloseTicket = jest.fn;
     const onFailTicket = jest.fn;
+    const onFailAllOpen = jest.fn;
     const onEndDay = jest.fn;
 
     beforeAll(() => {
@@ -72,6 +75,7 @@ describe("<Helpdesk />", () => {
         <Helpdesk
           {...{
             skills,
+            charisma,
             openTickets,
             selectedTicket,
             message,
@@ -79,6 +83,7 @@ describe("<Helpdesk />", () => {
             onSelectTicket,
             onCloseTicket,
             onFailTicket,
+            onFailAllOpen,
             onEndDay,
           }}
         />

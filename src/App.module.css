@@ -2,14 +2,14 @@
   width: 100%;
 }
 
-@media screen and (max-width: 900px) and (min-width: 400px) {
+@media screen and (max-width: 900px) and (min-width: 500px) {
   .Main {
     margin-left: 20%;
     width: 80%;
   }
 }
 
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 500px) {
   .Main {
     margin-left: 20vw;
     width: 80vw;

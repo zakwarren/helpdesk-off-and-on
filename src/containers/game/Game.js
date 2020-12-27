@@ -19,8 +19,6 @@ export const Game = (props) => {
       return <Helpdesk />;
     case STAGES.review:
       return <Review />;
-    case STAGES.yearReview:
-      return <h2>Yearly Review...</h2>;
     default:
       return null;
   }

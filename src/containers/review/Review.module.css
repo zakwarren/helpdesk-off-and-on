@@ -1,8 +1,21 @@
 .Review {
+  margin-top: 1rem;
   padding: 1rem;
 }
 
 .Speaker {
   color: var(--grey);
   font-style: italic;
+}
+
+.Stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media (min-width: 900px) {
+  .Stats {
+    flex-direction: row;
+  }
 }

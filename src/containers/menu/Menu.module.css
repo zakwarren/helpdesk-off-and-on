@@ -70,7 +70,7 @@
   display: none;
 }
 
-@media screen and (max-width: 900px) and (min-width: 400px) {
+@media screen and (max-width: 900px) and (min-width: 500px) {
   .Menu {
     width: 20%;
   }
@@ -120,7 +120,7 @@
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
   .Menu {
     width: 14.4rem;
     box-shadow: 0 0 0 100em rgba(0, 0, 0, 0);

@@ -3,11 +3,11 @@ export const STAGES = {
   tutorial: "tutorial",
   helpdesk: "helpdesk",
   review: "review",
-  yearReview: "yearReview",
 };
 
 export const MAX_EXPERIENCE = 100;
 export const DAY_LENGTH = 120000; // 2 minutes
+export const YEAR_LENGTH = 10;
 
 const SKILLS = {
   password: "password",

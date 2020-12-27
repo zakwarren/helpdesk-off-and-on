@@ -10,6 +10,12 @@ describe("game actions", () => {
     expect(action.stage).toEqual(stage);
   });
 
+  it("should return next day", () => {
+    const action = actions.nextDay();
+
+    expect(action.type).toEqual(actionTypes.NEXT_DAY);
+  });
+
   it("should return set selected ticket and the ticket", () => {
     const ticket = { id: 1 };
     const action = actions.setSelectedTicket(ticket);
@@ -58,6 +64,12 @@ describe("game actions", () => {
     expect(action.type).toEqual(actionTypes.FAIL_TICKET);
     expect(action.ticket).toEqual(ticket);
     expect(action.charisma).toEqual(charisma);
+  });
+
+  it("should return fail all open", () => {
+    const action = actions.failAllOpenTickets();
+
+    expect(action.type).toEqual(actionTypes.FAIL_ALL_OPEN);
   });
 
   it("should return reset tickets", () => {

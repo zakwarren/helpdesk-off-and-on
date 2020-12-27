@@ -1,4 +1,5 @@
 .Setup {
+  margin-top: 1rem;
   padding: 1rem;
 }
 
@@ -56,27 +57,4 @@
 .ValidationError {
   color: var(--theme4);
   margin: 0.3rem 0;
-}
-
-.Button {
-  margin: 0.6rem;
-  padding: 0.6rem;
-  min-width: 4rem;
-  background-color: var(--theme);
-  border: none;
-  border-radius: 0.5rem;
-  outline: none;
-  color: var(--white);
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.Button:hover {
-  background-color: var(--theme-dark);
-}
-
-.Button:disabled {
-  background-color: var(--grey);
-  cursor: not-allowed;
 }

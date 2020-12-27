@@ -19,6 +19,7 @@ export const Helpdesk = (props) => {
     onSelectTicket,
     onCloseTicket,
     onFailTicket,
+    onFailAllOpen,
     onEndDay,
   } = props;
 
@@ -27,10 +28,11 @@ export const Helpdesk = (props) => {
 
   useEffect(() => {
     const day = setTimeout(() => {
+      onFailAllOpen();
       onEndDay();
     }, DAY_LENGTH);
     return () => clearTimeout(day);
-  }, [onEndDay]);
+  }, [onFailAllOpen, onEndDay]);
 
   let optionBtns = null;
   if (selectedTicket) {
@@ -99,6 +101,7 @@ Helpdesk.propTypes = {
   onSelectTicket: PropTypes.func.isRequired,
   onCloseTicket: PropTypes.func.isRequired,
   onFailTicket: PropTypes.func.isRequired,
+  onFailAllOpen: PropTypes.func.isRequired,
   onEndDay: PropTypes.func.isRequired,
 };
 
@@ -120,6 +123,7 @@ export const mapDispatchToProps = (dispatch) => {
     onCloseTicket: (ticket) => dispatch(actions.closeTicket(ticket)),
     onFailTicket: (ticket, charisma) =>
       dispatch(actions.failTicket(ticket, charisma)),
+    onFailAllOpen: () => dispatch(actions.failAllOpenTickets()),
     onEndDay: () => dispatch(actions.setStage(STAGES.review)),
   };
 };

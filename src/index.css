@@ -49,3 +49,26 @@ html {
   background-color: #141414;
   background-color: var(--theme-dark);
 }
+
+button {
+  margin: 0.6rem;
+  padding: 0.6rem;
+  min-width: 4rem;
+  background-color: var(--theme);
+  border: none;
+  border-radius: 0.5rem;
+  outline: none;
+  color: var(--white);
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--theme-dark);
+}
+
+button:disabled {
+  background-color: var(--grey);
+  cursor: not-allowed;
+}

@@ -33,15 +33,8 @@ export const Setup = (props) => {
             Would you like a full induction or would you prefer to get started
             straight away?
           </p>
-          <button
-            className={css.Button}
-            onClick={() => onSetStage(STAGES.tutorial)}
-          >
-            Induction
-          </button>
-          <button className={css.Button} onClick={() => setStep(2)}>
-            Quick Start
-          </button>
+          <button onClick={() => onSetStage(STAGES.tutorial)}>Induction</button>
+          <button onClick={() => setStep(2)}>Quick Start</button>
         </>
       );
       break;
@@ -49,12 +42,7 @@ export const Setup = (props) => {
       content = (
         <>
           <p>Well no time to waste. The helpdesk awaits you!</p>
-          <button
-            className={css.Button}
-            onClick={() => onSetStage(STAGES.helpdesk)}
-          >
-            Let's Go!
-          </button>
+          <button onClick={() => onSetStage(STAGES.helpdesk)}>Let's Go!</button>
         </>
       );
       break;

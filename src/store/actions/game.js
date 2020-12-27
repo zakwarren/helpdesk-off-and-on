@@ -8,6 +8,12 @@ export const setStage = (stage) => {
   };
 };
 
+export const nextDay = () => {
+  return {
+    type: actionTypes.NEXT_DAY,
+  };
+};
+
 export const setSelectedTicket = (ticket) => {
   return {
     type: actionTypes.SET_SELECTED_TICKET,
@@ -58,6 +64,12 @@ export const failTicket = (ticket, charisma) => {
     type: actionTypes.FAIL_TICKET,
     ticket,
     charisma,
+  };
+};
+
+export const failAllOpenTickets = () => {
+  return {
+    type: actionTypes.FAIL_ALL_OPEN,
   };
 };
 
