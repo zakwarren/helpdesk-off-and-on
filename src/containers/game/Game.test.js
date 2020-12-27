@@ -3,6 +3,7 @@ import { shallow } from "enzyme";
 
 import { mapStateToProps, Game } from "./Game";
 import { STAGES } from "../../shared/config";
+import Setup from "../setup/Setup";
 import Helpdesk from "../helpdesk/Helpdesk";
 
 describe("<Game />", () => {
@@ -28,6 +29,13 @@ describe("<Game />", () => {
 
     it("should render null if no valid stage is passed in", () => {
       expect(wrapper.type()).toEqual(null);
+    });
+
+    it("should render a <Setup /> element if stage is setup", () => {
+      wrapper.setProps({ stage: STAGES.setup });
+      const s = wrapper.find(Setup);
+
+      expect(s).toHaveLength(1);
     });
 
     it("should render a <Helpdesk /> element if stage is helpdesk", () => {

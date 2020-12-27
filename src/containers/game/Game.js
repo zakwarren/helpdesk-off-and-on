@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import { STAGES } from "../../shared/config";
+import Setup from "../setup/Setup";
 import Helpdesk from "../helpdesk/Helpdesk";
 
 export const Game = (props) => {
@@ -10,7 +11,7 @@ export const Game = (props) => {
 
   switch (stage) {
     case STAGES.setup:
-      return null;
+      return <Setup />;
     case STAGES.tutorial:
       return null;
     case STAGES.helpdesk:
