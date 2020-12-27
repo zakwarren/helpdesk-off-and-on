@@ -13,3 +13,9 @@ export const addExperience = (experience) => {
     experience,
   };
 };
+
+export const clearDayExperience = () => {
+  return {
+    type: actionTypes.CLEAR_DAY_EXPERIENCE,
+  };
+};

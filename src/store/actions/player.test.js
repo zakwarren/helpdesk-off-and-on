@@ -17,4 +17,10 @@ describe("player actions", () => {
     expect(action.type).toEqual(actionTypes.ADD_EXPERIENCE);
     expect(action.experience).toEqual(experience);
   });
+
+  it("should return clear day experience", () => {
+    const action = actions.clearDayExperience();
+
+    expect(action.type).toEqual(actionTypes.CLEAR_DAY_EXPERIENCE);
+  });
 });

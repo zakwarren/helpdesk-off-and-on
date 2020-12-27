@@ -6,6 +6,7 @@ describe("player reducer", () => {
     username: "Newbie",
     level: 1,
     experience: 0,
+    dayExperience: 0,
     isManager: false,
     charisma: 50,
     chanceDisaster: 90,
@@ -41,6 +42,9 @@ describe("player reducer", () => {
 
     expect(newState).not.toEqual(initialState);
     expect(newState.experience).toEqual(initialState.experience + experience);
+    expect(newState.dayExperience).toEqual(
+      initialState.dayExperience + experience
+    );
     expect(newState.level).toEqual(initialState.level);
   });
 
@@ -53,6 +57,9 @@ describe("player reducer", () => {
 
     expect(newState).not.toEqual(initialState);
     expect(newState.experience).toEqual(10);
+    expect(newState.dayExperience).toEqual(
+      initialState.dayExperience + experience
+    );
     expect(newState.level).toEqual(initialState.level + 1);
 
     expect(newState.charisma).toBeGreaterThan(initialState.charisma);
@@ -63,5 +70,16 @@ describe("player reducer", () => {
     expect(newState.skills.hardware).toBeGreaterThan(
       initialState.skills.hardware
     );
+  });
+
+  it("should reset day experience", () => {
+    const state = { ...initialState, experience: 9, dayExperience: 10 };
+    const newState = reducer(state, {
+      type: actionTypes.CLEAR_DAY_EXPERIENCE,
+    });
+
+    expect(newState).not.toEqual(state);
+    expect(newState.experience).toEqual(9);
+    expect(newState.dayExperience).toEqual(0);
   });
 });

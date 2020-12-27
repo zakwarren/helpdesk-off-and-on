@@ -6,6 +6,7 @@ const initialState = {
   username: "Newbie",
   level: 1,
   experience: 0,
+  dayExperience: 0,
   isManager: false,
   charisma: 50,
   chanceDisaster: 90,
@@ -29,6 +30,7 @@ const reduceChance = (currentValue) => {
 
 const levelUp = (state, action) => {
   const level = state.level + 1;
+  const dayExperience = state.dayExperience + action.experience;
   const experience = state.experience + action.experience - MAX_EXPERIENCE;
   const charisma = bumpSkill(state.charisma);
   const chanceDisaster = reduceChance(state.chanceDisaster);
@@ -42,6 +44,7 @@ const levelUp = (state, action) => {
   return updateObject(state, {
     level,
     experience,
+    dayExperience,
     charisma,
     chanceDisaster,
     skills,
@@ -49,11 +52,10 @@ const levelUp = (state, action) => {
 };
 
 const addExperience = (state, action) => {
-  const exp = state.experience + action.experience;
-  if (exp < MAX_EXPERIENCE) {
-    return updateObject(state, {
-      experience: state.experience + action.experience,
-    });
+  const dayExperience = state.dayExperience + action.experience;
+  const experience = state.experience + action.experience;
+  if (experience < MAX_EXPERIENCE) {
+    return updateObject(state, { experience, dayExperience });
   } else {
     return levelUp(state, action);
   }
@@ -65,6 +67,8 @@ const reducer = (state = initialState, action) => {
       return updateObject(state, { username: action.username });
     case actionTypes.ADD_EXPERIENCE:
       return addExperience(state, action);
+    case actionTypes.CLEAR_DAY_EXPERIENCE:
+      return updateObject(state, { dayExperience: 0 });
     default:
       return state;
   }

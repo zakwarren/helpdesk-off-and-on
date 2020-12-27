@@ -59,4 +59,10 @@ describe("game actions", () => {
     expect(action.ticket).toEqual(ticket);
     expect(action.charisma).toEqual(charisma);
   });
+
+  it("should return reset tickets", () => {
+    const action = actions.resetTickets();
+
+    expect(action.type).toEqual(actionTypes.RESET_TICKETS);
+  });
 });

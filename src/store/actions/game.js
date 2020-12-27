@@ -60,3 +60,9 @@ export const failTicket = (ticket, charisma) => {
     charisma,
   };
 };
+
+export const resetTickets = () => {
+  return {
+    type: actionTypes.RESET_TICKETS,
+  };
+};

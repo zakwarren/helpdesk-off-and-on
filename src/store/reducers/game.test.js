@@ -116,4 +116,24 @@ describe("game reducer", () => {
     expect(newState.failedTickets[0].id).toEqual(1);
     expect(newState.message).not.toBeNull();
   });
+
+  it("should return tickets to empty state", () => {
+    const state = {
+      ...initialState,
+      maxId: 9,
+      closedTickets: [{ test: "test" }],
+      failedTickets: [{ test: "test 2" }],
+      openTickets: [{ test: "test 3" }],
+      selectedTicket: { test: "test 3" },
+      message: "This is a test",
+    };
+    const newState = reducer(state, { type: actionTypes.RESET_TICKETS });
+
+    expect(newState).not.toEqual(state);
+    expect(newState.closedTickets).toHaveLength(0);
+    expect(newState.failedTickets).toHaveLength(0);
+    expect(newState.openTickets).toHaveLength(0);
+    expect(newState.selectedTicket).toBeNull();
+    expect(newState.message).toBeNull();
+  });
 });

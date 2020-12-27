@@ -81,6 +81,15 @@ const reducer = (state = initialState, action) => {
       return openTicket(state, action);
     case actionTypes.FAIL_TICKET:
       return failTicket(state, action);
+    case actionTypes.RESET_TICKETS:
+      return updateObject(state, {
+        maxId: 0,
+        closedTickets: [],
+        failedTickets: [],
+        openTickets: [],
+        selectedTicket: null,
+        message: null,
+      });
     default:
       return state;
   }
