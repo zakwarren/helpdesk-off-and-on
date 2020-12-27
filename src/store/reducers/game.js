@@ -15,6 +15,7 @@ const initialState = {
   failedTickets: [],
   openTickets: [],
   selectedTicket: null,
+  message: null,
 };
 
 const closeTicket = (state, action) => {
@@ -24,8 +25,14 @@ const closeTicket = (state, action) => {
 
   const selectedTicket =
     state.selectedTicket.id === ticket.id ? null : state.selectedTicket;
+  const message = `Success! You gained ${ticket.experience} experience points!`;
 
-  return updateObject(state, { openTickets, closedTickets, selectedTicket });
+  return updateObject(state, {
+    openTickets,
+    closedTickets,
+    selectedTicket,
+    message,
+  });
 };
 
 const openTicket = (state, action) => {
@@ -47,14 +54,17 @@ const failTicket = (state, action) => {
         return t;
       }
     });
-    return updateObject(state, { openTickets, selectedTicket: null });
+    const message = `Failed to solve ${ticket.issueType} issue. ${ticket.customer} lost patience.`;
+    return updateObject(state, { openTickets, selectedTicket: null, message });
   } else {
     const openTickets = state.openTickets.filter((t) => t.id !== ticket.id);
     const failedTickets = [...state.closedTickets, ticket];
+    const message = `Failed to solve ${ticket.customer}'s issue. They ran out of patience and left.`;
     return updateObject(state, {
       openTickets,
       failedTickets,
       selectedTicket: null,
+      message,
     });
   }
 };

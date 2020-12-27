@@ -14,6 +14,7 @@ describe("game reducer", () => {
     failedTickets: [],
     openTickets: [],
     selectedTicket: null,
+    message: null,
   };
 
   it("should return the initial state when invalid type", () => {
@@ -43,22 +44,30 @@ describe("game reducer", () => {
 
   it("should return the closed ticket", () => {
     const state = { ...initialState, selectedTicket: { id: 2 } };
-    const action = { type: actionTypes.CLOSE_TICKET, ticket: { id: 1 } };
+    const action = {
+      type: actionTypes.CLOSE_TICKET,
+      ticket: { id: 1, experience: 1 },
+    };
     const newState = reducer(state, action);
 
     expect(newState).not.toEqual(state);
     expect(newState.closedTickets).toEqual([action.ticket]);
     expect(newState.selectedTicket).toEqual(state.selectedTicket);
+    expect(newState.message).not.toBeNull();
   });
 
   it("should return the closed ticket and deselect ticket", () => {
     const state = { ...initialState, selectedTicket: { id: 1 } };
-    const action = { type: actionTypes.CLOSE_TICKET, ticket: { id: 1 } };
+    const action = {
+      type: actionTypes.CLOSE_TICKET,
+      ticket: { id: 1, experience: 1 },
+    };
     const newState = reducer(state, action);
 
     expect(newState).not.toEqual(state);
     expect(newState.closedTickets).toEqual([action.ticket]);
     expect(newState.selectedTicket).toBeNull();
+    expect(newState.message).not.toBeNull();
   });
 
   it("should return the open ticket", () => {
@@ -71,7 +80,7 @@ describe("game reducer", () => {
   });
 
   it("should return the updated open tickets with reduced patience when patience > 0", () => {
-    const ticket = { id: 1, patience: 50 };
+    const ticket = { id: 1, patience: 50, issueType: "test", customer: "Test" };
     const charisma = 90;
     const state = {
       ...initialState,
@@ -86,10 +95,11 @@ describe("game reducer", () => {
     expect(newState.openTickets[0].patience).toEqual(40);
     expect(newState.selectedTicket).toBeNull();
     expect(newState.failedTickets).toHaveLength(0);
+    expect(newState.message).not.toBeNull();
   });
 
   it("should return as a failed ticket when patience is <= 0", () => {
-    const ticket = { id: 1, patience: 10 };
+    const ticket = { id: 1, patience: 10, customer: "Test" };
     const charisma = 80;
     const state = {
       ...initialState,
@@ -104,5 +114,6 @@ describe("game reducer", () => {
     expect(newState.selectedTicket).toBeNull();
     expect(newState.failedTickets).toHaveLength(1);
     expect(newState.failedTickets[0].id).toEqual(1);
+    expect(newState.message).not.toBeNull();
   });
 });

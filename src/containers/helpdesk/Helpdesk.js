@@ -14,6 +14,7 @@ export const Helpdesk = (props) => {
     charisma,
     openTickets,
     selectedTicket,
+    message,
     onAddExperience,
     onSelectTicket,
     onCloseTicket,
@@ -66,7 +67,7 @@ export const Helpdesk = (props) => {
       />
       <section className={css.Controls}>
         <h3>Options</h3>
-        {optionBtns}
+        {optionBtns ? optionBtns : message && <p>{message}</p>}
       </section>
     </>
   );
@@ -93,6 +94,7 @@ Helpdesk.propTypes = {
     experience: PropTypes.number.isRequired,
     patience: PropTypes.number.isRequired,
   }),
+  message: PropTypes.string,
   onAddExperience: PropTypes.func.isRequired,
   onSelectTicket: PropTypes.func.isRequired,
   onCloseTicket: PropTypes.func.isRequired,
@@ -106,6 +108,7 @@ export const mapStateToProps = (state) => {
     charisma: state.player.charisma,
     openTickets: state.game.openTickets,
     selectedTicket: state.game.selectedTicket,
+    message: state.game.message,
   };
 };
 

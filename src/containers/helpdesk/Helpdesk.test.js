@@ -16,6 +16,7 @@ describe("<Helpdesk />", () => {
       const game = {
         openTickets: [],
         selectedTicket: [],
+        message: null,
       };
       const appState = { player, game };
       const componentState = mapStateToProps(appState);
@@ -24,6 +25,7 @@ describe("<Helpdesk />", () => {
       expect(componentState.charisma).toEqual(player.charisma);
       expect(componentState.openTickets).toEqual(game.openTickets);
       expect(componentState.selectedTicket).toEqual(game.selectedTicket);
+      expect(componentState.message).toEqual(game.message);
     });
   });
 
@@ -53,6 +55,7 @@ describe("<Helpdesk />", () => {
       },
     ];
     const selectedTicket = null;
+    const message = null;
     const onAddExperience = jest.fn;
     const onSelectTicket = jest.fn;
     const onCloseTicket = jest.fn;
@@ -71,6 +74,7 @@ describe("<Helpdesk />", () => {
             skills,
             openTickets,
             selectedTicket,
+            message,
             onAddExperience,
             onSelectTicket,
             onCloseTicket,
