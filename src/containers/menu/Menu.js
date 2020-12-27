@@ -6,20 +6,34 @@ import { faBars, faUser } from "@fortawesome/free-solid-svg-icons";
 
 import css from "./Menu.module.css";
 
-export const Menu = ({ username }) => (
-  <nav className={css.Menu} tabIndex="0">
-    <div className={css.MenuBar}>
-      <div className={css.MenuButton}>
-        <FontAwesomeIcon icon={faBars} />
+export const Menu = ({ player }) => {
+  const { username, level, manager, charisma, skills } = player;
+  const skillKeys = Object.keys(skills);
+
+  return (
+    <nav className={css.Menu} tabIndex="0">
+      <div className={css.MenuBar}>
+        <div className={css.MenuButton}>
+          <FontAwesomeIcon icon={faBars} />
+        </div>
       </div>
-    </div>
-    <header className={css.Header}>
-      <div className={css.Avatar}>
-        <FontAwesomeIcon icon={faUser} />
-      </div>
-      <h2>{username}</h2>
-    </header>
-    {/* <ul>
+      <header className={css.Header}>
+        <div className={css.Avatar}>
+          <FontAwesomeIcon icon={faUser} />
+        </div>
+        <h2>{username}</h2>
+      </header>
+      <ul>
+        <li>Manager: {manager}</li>
+        <li>Level: {level}</li>
+        <li>Charisma: {charisma}%</li>
+        {skillKeys.map((s) => (
+          <li key={s}>
+            {s}: {skills[s]}%
+          </li>
+        ))}
+      </ul>
+      {/* <ul>
       <NavLink to="/dashboard" activeClassName={css.Active}>
         <FontAwesomeIcon icon={faTachometerAlt} />
         <span>Dashboard</span>
@@ -33,16 +47,24 @@ export const Menu = ({ username }) => (
         <span>Settings</span>
       </NavLink>
     </ul> */}
-  </nav>
-);
+    </nav>
+  );
+};
 
 Menu.propTypes = {
-  username: PropTypes.string.isRequired,
+  player: PropTypes.shape({
+    username: PropTypes.string,
+    manager: PropTypes.string.isRequired,
+    level: PropTypes.number.isRequired,
+    experience: PropTypes.number.isRequired,
+    charisma: PropTypes.number.isRequired,
+    skills: PropTypes.object.isRequired,
+  }).isRequired,
 };
 
 export const mapStateToProps = (state) => {
   return {
-    username: state.player.username,
+    player: state.player,
   };
 };
 

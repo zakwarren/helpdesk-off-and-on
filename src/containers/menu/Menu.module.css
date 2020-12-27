@@ -41,6 +41,15 @@
   flex-direction: column;
 }
 
+.Menu ul li {
+  padding: 0.5em 1em 0.5em 3em;
+  color: var(--white);
+  font-size: 0.95em;
+  font-weight: regular;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
 .Menu ul a {
   padding: 0.5em 1em 0.5em 3em;
   color: var(--white);
@@ -77,6 +86,15 @@
 
   .Menu .Avatar {
     font-size: 2rem;
+  }
+
+  .Menu ul {
+    margin-top: 1rem;
+  }
+
+  .Menu ul li {
+    padding: 0.2rem;
+    font-size: 0.8rem;
   }
 
   .Menu ul a {

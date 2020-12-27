@@ -8,21 +8,39 @@ describe("<Menu />", () => {
   describe("mapStateToProps", () => {
     it("should map the state to props correctly", () => {
       const player = {
-        username: "Newbie",
+        username: "Test",
+        manager: "Tester",
+        level: 1,
+        experience: 0,
+        charisma: 50,
+        skills: {
+          password: 5,
+          hardware: 5,
+        },
       };
       const appState = { player: player };
       const componentState = mapStateToProps(appState);
 
-      expect(componentState).toEqual(player);
+      expect(componentState).toEqual({ player });
     });
   });
 
   describe("display", () => {
     let wrapper;
-    const username = "Test";
+    const player = {
+      username: "Test",
+      manager: "Tester",
+      level: 1,
+      experience: 0,
+      charisma: 50,
+      skills: {
+        password: 5,
+        hardware: 5,
+      },
+    };
 
     beforeEach(() => {
-      wrapper = shallow(<Menu username={username} />);
+      wrapper = shallow(<Menu player={player} />);
     });
 
     it("should render with a <Nav /> element and correct class", () => {
@@ -57,7 +75,7 @@ describe("<Menu />", () => {
       const h2 = wrapper.find("h2");
 
       expect(h2).toHaveLength(1);
-      expect(h2.text()).toEqual(username);
+      expect(h2.text()).toEqual(player.username);
     });
 
     it.skip("should render a <ul /> element", () => {

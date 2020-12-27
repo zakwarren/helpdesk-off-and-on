@@ -5,7 +5,7 @@ import { Menu, Game } from "./containers";
 
 const App = () => (
   <>
-    <Menu username="Test" />
+    <Menu />
     <main className={css.Main}>
       <Game />
     </main>

@@ -38,8 +38,8 @@ export const Tutorial = (props) => {
       render = (
         <>
           <p>
-            Welcome to the Helpdesk. I hope you've had your bacon sandwiches
-            this morning, {username}. It's time to get started.
+            Welcome to the Helpdesk, {username}. I hope you've had your bacon
+            sandwiches this morning. It's time to get started.
           </p>
           <button onClick={() => setStep(1)}>Next</button>
         </>
