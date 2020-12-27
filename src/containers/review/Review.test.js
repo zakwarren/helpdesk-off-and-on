@@ -10,6 +10,7 @@ describe("<Review />", () => {
     it("should map the state to props correctly", () => {
       const player = {
         username: "Test",
+        manager: "Test",
         dayExperience: 0,
       };
       const game = {
@@ -27,6 +28,7 @@ describe("<Review />", () => {
       const componentState = mapStateToProps(appState);
 
       expect(componentState.username).toEqual(player.username);
+      expect(componentState.manager).toEqual(player.manager);
       expect(componentState.dayExperience).toEqual(player.dayExperience);
 
       expect(componentState.day).toEqual(game.day);
@@ -47,6 +49,7 @@ describe("<Review />", () => {
   describe("display", () => {
     let wrapper;
     const username = "Test";
+    const manager = "Tester";
     const day = 1;
     const dayExperience = 1;
     const closedTickets = 1;
@@ -64,6 +67,7 @@ describe("<Review />", () => {
         <Review
           {...{
             username,
+            manager,
             day,
             dayExperience,
             closedTickets,
@@ -101,7 +105,7 @@ describe("<Review />", () => {
       const p = wrapper.find(`p.${css.Speaker}`);
 
       expect(p).toHaveLength(1);
-      expect(p.text()).toEqual("Lukasz:");
+      expect(p.text()).toEqual(`${manager}:`);
     });
 
     it("should render a <div /> element with the correct class", () => {

@@ -10,6 +10,7 @@ import { Card } from "../../components";
 export const Review = (props) => {
   const {
     username,
+    manager,
     day,
     dayExperience,
     closedTickets,
@@ -48,7 +49,7 @@ export const Review = (props) => {
   return (
     <section className={css.Review}>
       <h1>{isYearReview ? "Yearly" : "Daily"} Review</h1>
-      <p className={css.Speaker}>Lukasz:</p>
+      <p className={css.Speaker}>{manager}:</p>
       <p>So {username}, let's take a look at how you did today.</p>
       <div className={css.Stats}>
         <Card isEnabled={false} isActive={false} onClick={() => {}}>
@@ -82,6 +83,7 @@ export const Review = (props) => {
 
 Review.propTypes = {
   username: PropTypes.string.isRequired,
+  manager: PropTypes.string.isRequired,
   day: PropTypes.number.isRequired,
   dayExperience: PropTypes.number.isRequired,
   closedTickets: PropTypes.number.isRequired,
@@ -98,6 +100,7 @@ Review.propTypes = {
 export const mapStateToProps = (state) => {
   return {
     username: state.player.username,
+    manager: state.player.manager,
     day: state.game.day,
     dayExperience: state.player.dayExperience,
     closedTickets: state.game.closedTickets.length,

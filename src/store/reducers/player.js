@@ -7,6 +7,7 @@ const initialState = {
   level: 1,
   experience: 0,
   dayExperience: 0,
+  manager: "Lukasz",
   isManager: false,
   charisma: 50,
   chanceDisaster: 90,

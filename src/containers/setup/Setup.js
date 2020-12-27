@@ -8,7 +8,7 @@ import { STAGES } from "../../shared/config";
 import Contract from "./contract/Contract";
 
 export const Setup = (props) => {
-  const { username, onSetStage } = props;
+  const { username, manager, onSetStage } = props;
   const [step, setStep] = useState(0);
 
   let content = null;
@@ -17,8 +17,8 @@ export const Setup = (props) => {
       content = (
         <>
           <p>
-            Welcome to your new job at Incompecorp! I'm Lukasz and I'll be your
-            manager here.
+            Welcome to your new job at Incompecorp! I'm {manager} and I'll be
+            your manager here.
           </p>
           <p>Before we start, there's just the matter of the paperwork.</p>
           <Contract css={css} onSuccess={() => setStep(1)} />
@@ -53,7 +53,7 @@ export const Setup = (props) => {
   return (
     <section className={css.Setup}>
       <h1>Helpdesk Simulator</h1>
-      <p className={css.Speaker}>Lukasz:</p>
+      <p className={css.Speaker}>{manager}:</p>
       {content}
     </section>
   );
@@ -61,12 +61,14 @@ export const Setup = (props) => {
 
 Setup.propTypes = {
   username: PropTypes.string,
+  manager: PropTypes.string.isRequired,
   onSetStage: PropTypes.func.isRequired,
 };
 
 export const mapStateToProps = (state) => {
   return {
     username: state.player.username,
+    manager: state.player.manager,
   };
 };
 

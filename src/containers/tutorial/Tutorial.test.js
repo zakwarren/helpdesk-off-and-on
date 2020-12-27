@@ -10,6 +10,7 @@ describe("<Tutorial />", () => {
     it("should map the state to props correctly", () => {
       const player = {
         username: null,
+        manager: "Test",
       };
       const appState = { player };
       const componentState = mapStateToProps(appState);
@@ -29,10 +30,11 @@ describe("<Tutorial />", () => {
   describe("display", () => {
     let wrapper;
     const username = "Test";
+    const manager = "Tester";
     const onToHelpdesk = jest.fn;
 
     beforeEach(() => {
-      wrapper = shallow(<Tutorial {...{ username, onToHelpdesk }} />);
+      wrapper = shallow(<Tutorial {...{ username, manager, onToHelpdesk }} />);
     });
 
     it("should render an <IssueTray /> element", () => {
@@ -52,7 +54,7 @@ describe("<Tutorial />", () => {
       const h3 = wrapper.find("h3");
 
       expect(h3).toHaveLength(1);
-      expect(h3.text()).toEqual("Lukasz:");
+      expect(h3.text()).toEqual(`${manager}:`);
     });
   });
 });

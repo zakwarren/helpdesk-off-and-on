@@ -25,7 +25,7 @@ const ticket2 = {
 };
 
 export const Tutorial = (props) => {
-  const { username, onToHelpdesk } = props;
+  const { username, manager, onToHelpdesk } = props;
   const [step, setStep] = useState(0);
   const [selectedTicket, setSelectedTicket] = useState(null);
 
@@ -197,7 +197,7 @@ export const Tutorial = (props) => {
         onClick={onSelectTicket}
       />
       <section className={css.Controls}>
-        <h3>Lukasz:</h3>
+        <h3>{manager}:</h3>
         {render}
       </section>
     </>
@@ -206,12 +206,14 @@ export const Tutorial = (props) => {
 
 Tutorial.propTypes = {
   username: PropTypes.string.isRequired,
+  manager: PropTypes.string.isRequired,
   onToHelpdesk: PropTypes.func.isRequired,
 };
 
 export const mapStateToProps = (state) => {
   return {
     username: state.player.username,
+    manager: state.player.manager,
   };
 };
 

@@ -10,6 +10,7 @@ describe("<Setup />", () => {
     it("should map the state to props correctly", () => {
       const player = {
         username: null,
+        manager: "Test",
       };
       const appState = { player };
       const componentState = mapStateToProps(appState);
@@ -29,10 +30,11 @@ describe("<Setup />", () => {
   describe("display", () => {
     let wrapper;
     const username = "Test";
+    const manager = "Tester";
     const onSetStage = jest.fn;
 
     beforeEach(() => {
-      wrapper = shallow(<Setup {...{ username, onSetStage }} />);
+      wrapper = shallow(<Setup {...{ username, manager, onSetStage }} />);
     });
 
     it("should render an <section /> element with the correct class", () => {
@@ -53,7 +55,7 @@ describe("<Setup />", () => {
       const p = wrapper.find(`p.${css.Speaker}`);
 
       expect(p).toHaveLength(1);
-      expect(p.text()).toEqual("Lukasz:");
+      expect(p.text()).toEqual(`${manager}:`);
     });
 
     it("should render a <Contract /> element when step state is 0", () => {
