@@ -1,15 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBars,
-  faUser,
-  faTachometerAlt,
-  faUsers,
-  faCog,
-} from "@fortawesome/free-solid-svg-icons";
+import { faBars, faUser } from "@fortawesome/free-solid-svg-icons";
 
 import css from "./Menu.module.css";
 
@@ -26,7 +19,7 @@ export const Menu = ({ username }) => (
       </div>
       <h2>{username}</h2>
     </header>
-    <ul>
+    {/* <ul>
       <NavLink to="/dashboard" activeClassName={css.Active}>
         <FontAwesomeIcon icon={faTachometerAlt} />
         <span>Dashboard</span>
@@ -39,7 +32,7 @@ export const Menu = ({ username }) => (
         <FontAwesomeIcon icon={faCog} />
         <span>Settings</span>
       </NavLink>
-    </ul>
+    </ul> */}
   </nav>
 );
 

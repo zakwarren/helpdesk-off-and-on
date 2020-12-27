@@ -60,18 +60,10 @@ describe("<Menu />", () => {
       expect(h2.text()).toEqual(username);
     });
 
-    it("should render a <ul /> element", () => {
+    it.skip("should render a <ul /> element", () => {
       const ul = wrapper.find("ul");
 
       expect(ul).toHaveLength(1);
-    });
-
-    it("should render the menu items in <li /> elements", () => {
-      const lis = wrapper.find("li");
-      const spans = wrapper.find("span");
-
-      expect(lis).toHaveLength(3);
-      expect(spans).toHaveLength(3);
     });
   });
 });
