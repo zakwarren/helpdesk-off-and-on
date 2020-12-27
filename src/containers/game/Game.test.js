@@ -4,6 +4,7 @@ import { shallow } from "enzyme";
 import { mapStateToProps, Game } from "./Game";
 import { STAGES } from "../../shared/config";
 import Setup from "../setup/Setup";
+import Tutorial from "../tutorial/Tutorial";
 import Helpdesk from "../helpdesk/Helpdesk";
 import Review from "../review/Review";
 
@@ -37,6 +38,13 @@ describe("<Game />", () => {
       const s = wrapper.find(Setup);
 
       expect(s).toHaveLength(1);
+    });
+
+    it("should render a <Helpdesk /> element if stage is tutorial", () => {
+      wrapper.setProps({ stage: STAGES.tutorial });
+      const tut = wrapper.find(Tutorial);
+
+      expect(tut).toHaveLength(1);
     });
 
     it("should render a <Helpdesk /> element if stage is helpdesk", () => {

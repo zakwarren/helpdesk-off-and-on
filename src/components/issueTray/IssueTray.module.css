@@ -1,10 +1,16 @@
 .IssueTray {
   padding: 1rem;
-  height: 80vh;
+  height: 70vh;
   overflow-y: scroll;
   display: flex;
   flex-direction: column-reverse;
   justify-content: flex-start;
+}
+
+@media (min-width: 500px) {
+  .IssueTray {
+    height: 80vh;
+  }
 }
 
 .Issue {

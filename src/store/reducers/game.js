@@ -69,8 +69,17 @@ const failTicket = (state, action) => {
         return t;
       }
     });
-    const message = `Failed to solve ${ticket.issueType} issue. ${ticket.customer} lost patience.`;
-    return updateObject(state, { openTickets, selectedTicket: null, message });
+    const halfExp = Math.floor(ticket.experience / 2);
+    const message = `Failed to solve ${ticket.issueType} issue. You gained ${halfExp} experience points! ${ticket.customer} lost patience.`;
+    const yearData = updateObject(state.yearData, {
+      experience: state.yearData.experience + halfExp,
+    });
+    return updateObject(state, {
+      openTickets,
+      selectedTicket: null,
+      message,
+      yearData,
+    });
   } else {
     const openTickets = state.openTickets.filter((t) => t.id !== ticket.id);
     const failedTickets = [...state.closedTickets, ticket];

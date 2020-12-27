@@ -1,0 +1,20 @@
+.Controls {
+  padding: 1rem;
+  height: 20vh;
+  border-top: 0.2rem solid var(--theme);
+  box-shadow: 0 -0.24rem 0.5rem 0 var(--shadow);
+}
+
+.Controls h3 {
+  margin: 0 0 0.5rem;
+  color: var(--grey);
+  font-style: italic;
+}
+
+.OptionBtns {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}

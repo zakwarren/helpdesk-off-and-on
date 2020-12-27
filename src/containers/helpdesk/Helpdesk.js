@@ -48,6 +48,8 @@ export const Helpdesk = (props) => {
                 onAddExperience(selectedTicket.experience);
                 onCloseTicket(selectedTicket);
               } else {
+                const halfExp = Math.floor(selectedTicket.experience / 2);
+                onAddExperience(halfExp);
                 onFailTicket(selectedTicket, charisma);
               }
             }}

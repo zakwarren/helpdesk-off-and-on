@@ -97,7 +97,13 @@ describe("game reducer", () => {
   });
 
   it("should return the updated open tickets with reduced patience when patience > 0", () => {
-    const ticket = { id: 1, patience: 50, issueType: "test", customer: "Test" };
+    const ticket = {
+      id: 1,
+      patience: 50,
+      issueType: "test",
+      customer: "Test",
+      experience: 2,
+    };
     const charisma = 90;
     const state = {
       ...initialState,
@@ -113,6 +119,7 @@ describe("game reducer", () => {
     expect(newState.selectedTicket).toBeNull();
     expect(newState.failedTickets).toHaveLength(0);
     expect(newState.message).not.toBeNull();
+    expect(newState.yearData.experience).toEqual(1);
   });
 
   it("should return as a failed ticket when patience is <= 0", () => {
