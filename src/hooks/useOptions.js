@@ -1,13 +1,13 @@
 import { useSelector } from "react-redux";
 
 import { weightedRandom } from "../shared/utilities";
+import { OPTIONS } from "../store/data/index";
 
 export const useOptions = (issueType) => {
-  const allOptions = useSelector((state) => state.game.allOptions);
   const skills = useSelector((state) => state.player.skills);
 
   if (issueType) {
-    const shuffledOpts = allOptions[issueType].sort(() => 0.5 - Math.random());
+    const shuffledOpts = OPTIONS[issueType].sort(() => 0.5 - Math.random());
     const fourOptions = shuffledOpts.slice(0, 4);
     const options = fourOptions.map((opt) => {
       return {

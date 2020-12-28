@@ -6,10 +6,6 @@ describe("game reducer", () => {
   const initialState = {
     stage: STAGES.setup,
     day: 1,
-    allNames: [],
-    allIssues: {},
-    allOptions: {},
-    allDisasters: { test: ["test 1", "test 2"] },
     maxId: 0,
     closedTickets: [],
     failedTickets: [],
@@ -145,12 +141,12 @@ describe("game reducer", () => {
   it("should return the disaster", () => {
     const state = {
       ...initialState,
-      openTickets: [{ id: 1, issueType: "test" }],
-      selectedTicket: { id: 1, issueType: "test" },
+      openTickets: [{ id: 1, issueType: "password" }],
+      selectedTicket: { id: 1, issueType: "password" },
     };
     const action = {
       type: actionTypes.DISASTER,
-      ticket: { id: 1, issueType: "test" },
+      ticket: { id: 1, issueType: "password" },
     };
     const newState = reducer(state, action);
 

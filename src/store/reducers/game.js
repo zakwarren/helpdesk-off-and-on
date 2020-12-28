@@ -1,16 +1,12 @@
 import * as actionTypes from "../actions/actionTypes";
 import { updateObject } from "../../shared/utilities";
 
-import { NAMES, ISSUES, OPTIONS, DISASTERS } from "../data";
+import { DISASTERS } from "../data";
 import { STAGES } from "../../shared/config";
 
 const initialState = {
   stage: STAGES.setup,
   day: 1,
-  allNames: NAMES,
-  allIssues: ISSUES,
-  allOptions: OPTIONS,
-  allDisasters: DISASTERS,
   maxId: 0,
   closedTickets: [],
   failedTickets: [],
@@ -32,7 +28,7 @@ const closeTicket = (state, action) => {
 
   const selectedTicket =
     state.selectedTicket.id === ticket.id ? null : state.selectedTicket;
-  const message = `Success! You gained ${ticket.experience} experience points!`;
+  const message = `Success! You gained ${ticket.experience} experience points.`;
 
   const yearData = updateObject(state.yearData, {
     experience: state.yearData.experience + ticket.experience,
@@ -70,7 +66,7 @@ const failTicket = (state, action) => {
       }
     });
     const halfExp = Math.floor(ticket.experience / 2);
-    const message = `Failed to solve ${ticket.issueType} issue. You gained ${halfExp} experience points! ${ticket.customer} lost patience.`;
+    const message = `Failed to solve ${ticket.issueType} issue. You gained ${halfExp} experience points. ${ticket.customer} lost patience.`;
     const yearData = updateObject(state.yearData, {
       experience: state.yearData.experience + halfExp,
     });
@@ -105,11 +101,11 @@ const disaster = (state, action) => {
   const selectedTicket =
     state.selectedTicket.id === ticket.id ? null : state.selectedTicket;
 
-  const relevantDisasters = state.allDisasters[ticket.issueType];
+  const relevantDisasters = DISASTERS[ticket.issueType];
   const disaster =
     relevantDisasters[Math.floor(Math.random() * relevantDisasters.length)];
 
-  const message = `Disaster! You ${disaster} ${ticket.customer} left in despair.`;
+  const message = `Disaster! You ${disaster}! ${ticket.customer} left in despair.`;
 
   return updateObject(state, {
     openTickets,
