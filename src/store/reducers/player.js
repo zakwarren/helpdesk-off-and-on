@@ -1,5 +1,5 @@
 import * as actionTypes from "../actions/actionTypes";
-import { updateObject } from "../../shared/utilities";
+import { updateObject, weightedRandom } from "../../shared/utilities";
 import { MAX_EXPERIENCE, getSkills } from "../../shared/config";
 
 const initialState = {
@@ -9,11 +9,11 @@ const initialState = {
   dayExperience: 0,
   manager: "Lukasz",
   isManager: false,
-  charisma: 50,
-  chanceDisaster: 90,
+  charisma: Math.min(100, weightedRandom(100, 4)),
+  chanceDisaster: Math.min(100, weightedRandom(100, 4)),
   skills: {
-    password: 5,
-    hardware: 5,
+    password: Math.min(100, weightedRandom(10, 4)),
+    hardware: Math.min(100, weightedRandom(10, 4)),
   },
 };
 
