@@ -7,7 +7,7 @@ import { faBars, faUser } from "@fortawesome/free-solid-svg-icons";
 import css from "./Menu.module.css";
 
 export const Menu = ({ player }) => {
-  const { username, level, manager, charisma, skills } = player;
+  const { username, level, manager, charisma, chanceDisaster, skills } = player;
   const skillKeys = Object.keys(skills);
 
   return (
@@ -27,6 +27,7 @@ export const Menu = ({ player }) => {
         <li>Manager: {manager}</li>
         <li>Level: {level}</li>
         <li>Charisma: {charisma}%</li>
+        <li>Chance of Disaster: {chanceDisaster}%</li>
         {skillKeys.map((s) => (
           <li key={s}>
             {s}: {skills[s]}%
@@ -58,6 +59,7 @@ Menu.propTypes = {
     level: PropTypes.number.isRequired,
     experience: PropTypes.number.isRequired,
     charisma: PropTypes.number.isRequired,
+    chanceDisaster: PropTypes.number.isRequired,
     skills: PropTypes.object.isRequired,
   }).isRequired,
 };

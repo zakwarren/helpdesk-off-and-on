@@ -13,6 +13,7 @@ describe("<Menu />", () => {
         level: 1,
         experience: 0,
         charisma: 50,
+        chanceDisaster: 50,
         skills: {
           password: 5,
           hardware: 5,
@@ -33,6 +34,7 @@ describe("<Menu />", () => {
       level: 1,
       experience: 0,
       charisma: 50,
+      chanceDisaster: 50,
       skills: {
         password: 5,
         hardware: 5,
@@ -78,10 +80,16 @@ describe("<Menu />", () => {
       expect(h2.text()).toEqual(player.username);
     });
 
-    it.skip("should render a <ul /> element", () => {
+    it("should render a <ul /> element", () => {
       const ul = wrapper.find("ul");
 
       expect(ul).toHaveLength(1);
+    });
+
+    it("should render a number of <li /> elements", () => {
+      const lis = wrapper.find("li");
+
+      expect(lis.length).toBeGreaterThan(1);
     });
   });
 });
