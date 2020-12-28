@@ -11,6 +11,7 @@ describe("<Tutorial />", () => {
       const player = {
         username: null,
         manager: "Test",
+        chanceDisaster: 50,
       };
       const appState = { player };
       const componentState = mapStateToProps(appState);
@@ -31,10 +32,13 @@ describe("<Tutorial />", () => {
     let wrapper;
     const username = "Test";
     const manager = "Tester";
+    const chanceDisaster = 50;
     const onToHelpdesk = jest.fn;
 
     beforeEach(() => {
-      wrapper = shallow(<Tutorial {...{ username, manager, onToHelpdesk }} />);
+      wrapper = shallow(
+        <Tutorial {...{ username, manager, chanceDisaster, onToHelpdesk }} />
+      );
     });
 
     it("should render an <IssueTray /> element", () => {

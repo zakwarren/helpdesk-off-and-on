@@ -67,6 +67,13 @@ export const failTicket = (ticket, charisma) => {
   };
 };
 
+export const disasterTicket = (ticket) => {
+  return {
+    type: actionTypes.DISASTER,
+    ticket,
+  };
+};
+
 export const failAllOpenTickets = () => {
   return {
     type: actionTypes.FAIL_ALL_OPEN,

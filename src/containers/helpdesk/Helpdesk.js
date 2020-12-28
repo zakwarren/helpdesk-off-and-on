@@ -12,6 +12,7 @@ export const Helpdesk = (props) => {
   const {
     skills,
     charisma,
+    chanceDisaster,
     openTickets,
     selectedTicket,
     message,
@@ -19,6 +20,7 @@ export const Helpdesk = (props) => {
     onSelectTicket,
     onCloseTicket,
     onFailTicket,
+    onDisaster,
     onFailAllOpen,
     onEndDay,
   } = props;
@@ -47,6 +49,8 @@ export const Helpdesk = (props) => {
               if (skill > opt.difficulty) {
                 onAddExperience(selectedTicket.experience);
                 onCloseTicket(selectedTicket);
+              } else if (Math.floor(Math.random() * 100) < chanceDisaster) {
+                onDisaster(selectedTicket);
               } else {
                 const halfExp = Math.floor(selectedTicket.experience / 2);
                 onAddExperience(halfExp);
@@ -80,6 +84,7 @@ export const Helpdesk = (props) => {
 Helpdesk.propTypes = {
   skills: PropTypes.object.isRequired,
   charisma: PropTypes.number.isRequired,
+  chanceDisaster: PropTypes.number.isRequired,
   openTickets: PropTypes.arrayOf(
     PropTypes.exact({
       id: PropTypes.number.isRequired,
@@ -103,6 +108,7 @@ Helpdesk.propTypes = {
   onSelectTicket: PropTypes.func.isRequired,
   onCloseTicket: PropTypes.func.isRequired,
   onFailTicket: PropTypes.func.isRequired,
+  onDisaster: PropTypes.func.isRequired,
   onFailAllOpen: PropTypes.func.isRequired,
   onEndDay: PropTypes.func.isRequired,
 };
@@ -111,6 +117,7 @@ export const mapStateToProps = (state) => {
   return {
     skills: state.player.skills,
     charisma: state.player.charisma,
+    chanceDisaster: state.player.chanceDisaster,
     openTickets: state.game.openTickets,
     selectedTicket: state.game.selectedTicket,
     message: state.game.message,
@@ -125,6 +132,7 @@ export const mapDispatchToProps = (dispatch) => {
     onCloseTicket: (ticket) => dispatch(actions.closeTicket(ticket)),
     onFailTicket: (ticket, charisma) =>
       dispatch(actions.failTicket(ticket, charisma)),
+    onDisaster: (ticket) => dispatch(actions.disasterTicket(ticket)),
     onFailAllOpen: () => dispatch(actions.failAllOpenTickets()),
     onEndDay: () => dispatch(actions.setStage(STAGES.review)),
   };

@@ -5,6 +5,7 @@ export {
   openRandomTicket,
   closeTicket,
   failTicket,
+  disasterTicket,
   failAllOpenTickets,
   resetTickets,
 } from "./game";

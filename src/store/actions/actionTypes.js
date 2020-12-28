@@ -9,4 +9,5 @@ export const CLOSE_TICKET = "CLOSE_TICKET";
 export const OPEN_TICKET = "OPEN_TICKET";
 export const FAIL_TICKET = "FAIL_TICKET";
 export const FAIL_ALL_OPEN = "FAIL_ALL_OPEN";
+export const DISASTER = "DISASTER";
 export const RESET_TICKETS = "RESET_TICKETS";

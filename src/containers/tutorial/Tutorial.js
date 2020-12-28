@@ -23,9 +23,17 @@ const ticket2 = {
   experience: 5,
   patience: 96,
 };
+const ticket3 = {
+  id: 2,
+  customer: "Mandy",
+  issueType: "password",
+  issue: "My screen is blank. Can you fix it?",
+  experience: 5,
+  patience: 96,
+};
 
 export const Tutorial = (props) => {
-  const { username, manager, onToHelpdesk } = props;
+  const { username, manager, chanceDisaster, onToHelpdesk } = props;
   const [step, setStep] = useState(0);
   const [selectedTicket, setSelectedTicket] = useState(null);
 
@@ -176,6 +184,49 @@ export const Tutorial = (props) => {
             Congratulations! You've successfully helped {ticket2.customer}.
             You've also earned {ticket2.experience} points.
           </p>
+          <p>Let's try helping one more customer together.</p>
+          <button onClick={() => setStep(10)}>Next</button>
+        </>
+      );
+      break;
+    case 10:
+      openTickets.push(ticket3);
+      onSelectTicket = (ticket) => {
+        setSelectedTicket(ticket);
+        setStep(11);
+      };
+      render = <></>;
+      break;
+    case 11:
+      openTickets.push(ticket3);
+      onSelectTicket = () => {};
+      render = (
+        <>
+          <button onClick={() => setStep(12)}>
+            Try turning it off and on again
+          </button>
+          <button onClick={() => setStep(12)}>Open Up Machine</button>
+          <button onClick={() => setStep(12)}>Fix Wiring</button>
+          <button onClick={() => setStep(12)}>Hit It With A Wrench</button>
+        </>
+      );
+      break;
+    case 12:
+      render = (
+        <>
+          <p>Disaster! You destroyed the hardware!</p>
+          <p>
+            Oh dear! This can happen occasionally. Your current chance of
+            disaster is {chanceDisaster}%. You'll reduce this chance with
+            experience.
+          </p>
+          <button onClick={() => setStep(13)}>Next</button>
+        </>
+      );
+      break;
+    case 13:
+      render = (
+        <>
           <p>
             That's all the induction I had planned for today. You now know
             enough to try it on your own. Good luck!
@@ -207,6 +258,7 @@ export const Tutorial = (props) => {
 Tutorial.propTypes = {
   username: PropTypes.string.isRequired,
   manager: PropTypes.string.isRequired,
+  chanceDisaster: PropTypes.number.isRequired,
   onToHelpdesk: PropTypes.func.isRequired,
 };
 
@@ -214,6 +266,7 @@ export const mapStateToProps = (state) => {
   return {
     username: state.player.username,
     manager: state.player.manager,
+    chanceDisaster: state.player.chanceDisaster,
   };
 };
 

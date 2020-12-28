@@ -98,6 +98,27 @@ const failTicket = (state, action) => {
   }
 };
 
+const disaster = (state, action) => {
+  const ticket = action.ticket;
+  const openTickets = state.openTickets.filter((t) => t.id !== ticket.id);
+  const failedTickets = [...state.failedTickets, ticket];
+  const selectedTicket =
+    state.selectedTicket.id === ticket.id ? null : state.selectedTicket;
+
+  const relevantDisasters = state.allDisasters[ticket.issueType];
+  const disaster =
+    relevantDisasters[Math.floor(Math.random() * relevantDisasters.length)];
+
+  const message = `Disaster! You ${disaster} ${ticket.customer} left in despair.`;
+
+  return updateObject(state, {
+    openTickets,
+    failedTickets,
+    selectedTicket,
+    message,
+  });
+};
+
 const failAllOpen = (state) => {
   const failedTickets = [...state.failedTickets, ...state.openTickets];
   const yearData = updateObject(state.yearData, {
@@ -137,6 +158,8 @@ const reducer = (state = initialState, action) => {
       return openTicket(state, action);
     case actionTypes.FAIL_TICKET:
       return failTicket(state, action);
+    case actionTypes.DISASTER:
+      return disaster(state, action);
     case actionTypes.FAIL_ALL_OPEN:
       return failAllOpen(state);
     case actionTypes.RESET_TICKETS:

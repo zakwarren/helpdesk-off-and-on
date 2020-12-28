@@ -12,6 +12,7 @@ describe("<Helpdesk />", () => {
       const player = {
         skills: {},
         charisma: 1,
+        chanceDisaster: 1,
       };
       const game = {
         openTickets: [],
@@ -23,6 +24,7 @@ describe("<Helpdesk />", () => {
 
       expect(componentState.skills).toEqual(player.skills);
       expect(componentState.charisma).toEqual(player.charisma);
+      expect(componentState.chanceDisaster).toEqual(player.chanceDisaster);
       expect(componentState.openTickets).toEqual(game.openTickets);
       expect(componentState.selectedTicket).toEqual(game.selectedTicket);
       expect(componentState.message).toEqual(game.message);
@@ -37,6 +39,7 @@ describe("<Helpdesk />", () => {
       expect(typeof componentDispatch.onSelectTicket).toBe("function");
       expect(typeof componentDispatch.onCloseTicket).toBe("function");
       expect(typeof componentDispatch.onFailTicket).toBe("function");
+      expect(typeof componentDispatch.onDisaster).toBe("function");
       expect(typeof componentDispatch.onFailAllOpen).toBe("function");
       expect(typeof componentDispatch.onEndDay).toBe("function");
     });
@@ -46,6 +49,7 @@ describe("<Helpdesk />", () => {
     let wrapper;
     const skills = {};
     const charisma = 50;
+    const chanceDisaster = 50;
     const openTickets = [
       {
         id: 1,
@@ -62,6 +66,7 @@ describe("<Helpdesk />", () => {
     const onSelectTicket = jest.fn;
     const onCloseTicket = jest.fn;
     const onFailTicket = jest.fn;
+    const onDisaster = jest.fn;
     const onFailAllOpen = jest.fn;
     const onEndDay = jest.fn;
 
@@ -76,6 +81,7 @@ describe("<Helpdesk />", () => {
           {...{
             skills,
             charisma,
+            chanceDisaster,
             openTickets,
             selectedTicket,
             message,
@@ -83,6 +89,7 @@ describe("<Helpdesk />", () => {
             onSelectTicket,
             onCloseTicket,
             onFailTicket,
+            onDisaster,
             onFailAllOpen,
             onEndDay,
           }}

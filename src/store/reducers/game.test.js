@@ -9,7 +9,7 @@ describe("game reducer", () => {
     allNames: [],
     allIssues: {},
     allOptions: {},
-    allDisasters: {},
+    allDisasters: { test: ["test 1", "test 2"] },
     maxId: 0,
     closedTickets: [],
     failedTickets: [],
@@ -140,6 +140,25 @@ describe("game reducer", () => {
     expect(newState.failedTickets[0].id).toEqual(1);
     expect(newState.message).not.toBeNull();
     expect(newState.yearData.failedTickets).toEqual(1);
+  });
+
+  it("should return the disaster", () => {
+    const state = {
+      ...initialState,
+      openTickets: [{ id: 1, issueType: "test" }],
+      selectedTicket: { id: 1, issueType: "test" },
+    };
+    const action = {
+      type: actionTypes.DISASTER,
+      ticket: { id: 1, issueType: "test" },
+    };
+    const newState = reducer(state, action);
+
+    expect(newState).not.toEqual(state);
+    expect(newState.closedTickets).toHaveLength(0);
+    expect(newState.failedTickets).toHaveLength(1);
+    expect(newState.selectedTicket).toBeNull();
+    expect(newState.message).not.toBeNull();
   });
 
   it("should move all open tickets to failed tickets", () => {

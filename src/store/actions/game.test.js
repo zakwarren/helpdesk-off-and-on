@@ -66,6 +66,14 @@ describe("game actions", () => {
     expect(action.charisma).toEqual(charisma);
   });
 
+  it("should return disaster ticket", () => {
+    const ticket = { id: 1 };
+    const action = actions.disasterTicket(ticket);
+
+    expect(action.type).toEqual(actionTypes.DISASTER);
+    expect(action.ticket).toEqual(ticket);
+  });
+
   it("should return fail all open", () => {
     const action = actions.failAllOpenTickets();
 
