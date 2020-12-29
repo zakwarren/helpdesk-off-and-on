@@ -1,6 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 
 import { STAGES } from "../../shared/config";
 import Setup from "../setup/Setup";
@@ -8,8 +7,8 @@ import Tutorial from "../tutorial/Tutorial";
 import Helpdesk from "../helpdesk/Helpdesk";
 import Review from "../review/Review";
 
-export const Game = (props) => {
-  const { stage } = props;
+const Game = () => {
+  const stage = useSelector((state) => state.game.stage);
 
   switch (stage) {
     case STAGES.setup:
@@ -25,14 +24,4 @@ export const Game = (props) => {
   }
 };
 
-Game.propTypes = {
-  stage: PropTypes.string.isRequired,
-};
-
-export const mapStateToProps = (state) => {
-  return {
-    stage: state.game.stage,
-  };
-};
-
-export default connect(mapStateToProps)(Game);
+export default Game;
