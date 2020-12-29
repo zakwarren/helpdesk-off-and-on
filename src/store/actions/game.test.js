@@ -2,6 +2,18 @@ import * as actionTypes from "./actionTypes";
 import * as actions from "./game";
 
 describe("game actions", () => {
+  it("should return load game and game data", () => {
+    const day = 1;
+    const stage = "test";
+    const yearData = { test: "test" };
+    const action = actions.loadGame(day, stage, yearData);
+
+    expect(action.type).toEqual(actionTypes.LOAD_GAME);
+    expect(action.day).toEqual(day);
+    expect(action.stage).toEqual(stage);
+    expect(action.yearData).toEqual(yearData);
+  });
+
   it("should return set stage and the stage", () => {
     const stage = "test";
     const action = actions.setStage(stage);

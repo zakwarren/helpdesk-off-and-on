@@ -23,6 +23,18 @@ describe("player reducer", () => {
     expect(newState).toEqual(initialState);
   });
 
+  it("should set player data", () => {
+    const player = { username: "Test", level: 2 };
+    const newState = reducer(initialState, {
+      type: actionTypes.LOAD_PLAYER,
+      player,
+    });
+
+    expect(newState).not.toEqual(initialState);
+    expect(newState.username).toEqual(player.username);
+    expect(newState.level).toEqual(player.level);
+  });
+
   it("should set username", () => {
     const username = "test";
     const newState = reducer(initialState, {

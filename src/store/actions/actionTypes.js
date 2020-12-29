@@ -1,7 +1,9 @@
+export const LOAD_PLAYER = "LOAD_PLAYER";
 export const SET_USERNAME = "SET_USERNAME";
 export const ADD_EXPERIENCE = "ADD_EXPERIENCE";
 export const CLEAR_DAY_EXPERIENCE = "CLEAR_DAY_EXPERIENCE";
 
+export const LOAD_GAME = "LOAD_GAME";
 export const SET_STAGE = "SET_STAGE";
 export const NEXT_DAY = "NEXT_DAY";
 export const SET_SELECTED_TICKET = "SET_SELECTED_TICKET";

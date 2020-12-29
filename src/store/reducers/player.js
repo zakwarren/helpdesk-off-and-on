@@ -64,6 +64,8 @@ const addExperience = (state, action) => {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.LOAD_PLAYER:
+      return updateObject(state, action.player);
     case actionTypes.SET_USERNAME:
       return updateObject(state, { username: action.username });
     case actionTypes.ADD_EXPERIENCE:

@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import css from "./Review.module.css";
 import * as actions from "../../store/actions";
 import { STAGES, YEAR_LENGTH } from "../../shared/config";
+import { useSaveGame } from "../../hooks";
 import { Card } from "../../components";
 
 export const Review = (props) => {
@@ -19,6 +20,8 @@ export const Review = (props) => {
     onNextDay,
   } = props;
   const isYearReview = day % YEAR_LENGTH === 0;
+
+  useSaveGame();
 
   const yearReview = isYearReview && (
     <>

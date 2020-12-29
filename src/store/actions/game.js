@@ -2,6 +2,15 @@ import * as actionTypes from "./actionTypes";
 import { getRandomArrayItem, weightedRandom } from "../../shared/utilities";
 import { NAMES, ISSUES } from "../data";
 
+export const loadGame = (day, stage, yearData) => {
+  return {
+    type: actionTypes.LOAD_GAME,
+    day,
+    stage,
+    yearData,
+  };
+};
+
 export const setStage = (stage) => {
   return {
     type: actionTypes.SET_STAGE,

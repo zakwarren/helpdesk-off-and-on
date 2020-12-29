@@ -26,6 +26,21 @@ describe("game reducer", () => {
     expect(newState).toEqual(initialState);
   });
 
+  it("should return the loaded data", () => {
+    const action = {
+      type: actionTypes.LOAD_GAME,
+      day: 2,
+      stage: "test",
+      yearData: { test: "test" },
+    };
+    const newState = reducer(initialState, action);
+
+    expect(newState).not.toEqual(initialState);
+    expect(newState.day).toEqual(action.day);
+    expect(newState.stage).toEqual(action.stage);
+    expect(newState.yearData).toEqual(action.yearData);
+  });
+
   it("should return the stage", () => {
     const action = { type: actionTypes.SET_STAGE, stage: "test" };
     const newState = reducer(initialState, action);

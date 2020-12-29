@@ -2,6 +2,14 @@ import * as actionTypes from "./actionTypes";
 import * as actions from "./player";
 
 describe("player actions", () => {
+  it("should return load player and player data", () => {
+    const player = { test: "test" };
+    const action = actions.loadPlayer(player);
+
+    expect(action.type).toEqual(actionTypes.LOAD_PLAYER);
+    expect(action.player).toEqual(player);
+  });
+
   it("should return set username and username", () => {
     const username = "Test";
     const action = actions.setUsername(username);

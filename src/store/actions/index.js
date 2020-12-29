@@ -1,4 +1,5 @@
 export {
+  loadGame,
   setStage,
   nextDay,
   setSelectedTicket,
@@ -9,4 +10,9 @@ export {
   failAllOpenTickets,
   resetTickets,
 } from "./game";
-export { setUsername, addExperience, clearDayExperience } from "./player";
+export {
+  loadPlayer,
+  setUsername,
+  addExperience,
+  clearDayExperience,
+} from "./player";
