@@ -9,12 +9,13 @@ const getRandomTime = () => Math.floor(Math.random() * 5000) + 1000;
 export const useOpenTicket = () => {
   const dispatch = useDispatch();
   const level = useSelector((state) => state.player.level);
+  const manager = useSelector((state) => state.player.manager);
 
   useEffect(() => {
     dispatch(openRandomTicket());
 
     let ticker = null;
-    const time = getTimeBetweenTickets(level);
+    const time = getTimeBetweenTickets(level, manager);
 
     const getTicket = () =>
       setTimeout(() => {
@@ -24,5 +25,5 @@ export const useOpenTicket = () => {
     ticker = getTicket();
 
     return () => clearTimeout(ticker);
-  }, [dispatch, level]);
+  }, [dispatch, level, manager]);
 };

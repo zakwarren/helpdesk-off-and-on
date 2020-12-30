@@ -19,7 +19,9 @@ const SKILLS = {
 };
 
 export const getSkills = (level) => {
-  if (level < 10) {
+  if (level < 2) {
+    return [SKILLS.password];
+  } else if (level < 10) {
     return [SKILLS.password, SKILLS.hardware];
   } else if (level < 15) {
     return [
@@ -40,28 +42,47 @@ export const getSkills = (level) => {
   }
 };
 
-export const getTimeBetweenTickets = (level) => {
+export const getTimeBetweenTickets = (level, manager) => {
+  const timeModifier = MANAGERS[manager]?.timeModifier;
+
+  let time = 1000;
   if (level < 5) {
-    return 5000;
+    time = 5000;
   } else if (level < 10) {
-    return 4000;
+    time = 4000;
   } else if (level < 15) {
-    return 3000;
+    time = 3000;
   } else if (level < 25) {
-    return 2000;
-  } else {
-    return 1000;
+    time = 2000;
   }
+
+  if (timeModifier) {
+    time = time / timeModifier;
+  }
+
+  return time;
 };
 
 export const MANAGERS = {
   Lukasz: {
     difficulty: "easy",
+    charismaDie: 4,
+    skillMax: 20,
+    skillDie: 4,
+    timeModifier: 1,
   },
   Alice: {
     difficulty: "medium",
+    charismaDie: 2,
+    skillMax: 20,
+    skillDie: 2,
+    timeModifier: 2,
   },
   Matt: {
     difficulty: "hard",
+    charismaDie: 1,
+    skillMax: 10,
+    skillDie: 2,
+    timeModifier: 4,
   },
 };

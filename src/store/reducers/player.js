@@ -1,6 +1,6 @@
 import * as actionTypes from "../actions/actionTypes";
 import { updateObject, weightedRandom } from "../../shared/utilities";
-import { MAX_EXPERIENCE, getSkills } from "../../shared/config";
+import { MAX_EXPERIENCE, getSkills, MANAGERS } from "../../shared/config";
 
 const initialState = {
   username: "",
@@ -15,15 +15,23 @@ const initialState = {
 };
 
 const createPlayer = (state, action) => {
+  const manager = MANAGERS[action.manager];
+
   return updateObject(state, {
     username: action.username,
     level: 1,
     manager: action.manager,
-    charisma: Math.min(100, weightedRandom(100, 4)),
-    chanceDisaster: Math.min(100, weightedRandom(100, 4)),
+    charisma: Math.min(100, weightedRandom(100, manager.charismaDie)),
+    chanceDisaster: Math.min(100, weightedRandom(100, manager.charismaDie)),
     skills: {
-      password: Math.min(100, weightedRandom(10, 4)),
-      hardware: Math.min(100, weightedRandom(10, 4)),
+      password: Math.min(
+        100,
+        weightedRandom(manager.skillMax, manager.skillDie)
+      ),
+      hardware: Math.min(
+        100,
+        weightedRandom(manager.skillMax, manager.skillDie)
+      ),
     },
   });
 };
