@@ -55,7 +55,7 @@ describe("<Setup />", () => {
       const p = wrapper.find(`p.${css.Speaker}`);
 
       expect(p).toHaveLength(1);
-      expect(p.text()).toEqual(`${manager}:`);
+      expect(p.text()).toEqual("HR:");
     });
 
     it("should render a <Contract /> element when step state is 0", () => {

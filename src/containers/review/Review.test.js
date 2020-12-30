@@ -5,6 +5,11 @@ import css from "./Review.module.css";
 import { mapStateToProps, mapDispatchToProps, Review } from "./Review";
 import { Card } from "../../components";
 
+import * as hooks from "../../hooks";
+jest.mock("../../hooks", () => ({
+  useSaveGame: jest.fn,
+}));
+
 describe("<Review />", () => {
   describe("mapStateToProps", () => {
     it("should map the state to props correctly", () => {

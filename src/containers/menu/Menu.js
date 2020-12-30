@@ -55,7 +55,7 @@ export const Menu = ({ player }) => {
 Menu.propTypes = {
   player: PropTypes.shape({
     username: PropTypes.string,
-    manager: PropTypes.string.isRequired,
+    manager: PropTypes.string,
     level: PropTypes.number.isRequired,
     experience: PropTypes.number.isRequired,
     charisma: PropTypes.number.isRequired,

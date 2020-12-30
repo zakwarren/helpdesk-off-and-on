@@ -16,10 +16,8 @@ export const Setup = (props) => {
     case 0:
       content = (
         <>
-          <p>
-            Welcome to your new job at Incompecorp! I'm {manager} and I'll be
-            your manager here.
-          </p>
+          <p className={css.Speaker}>HR:</p>
+          <p>Welcome to your new job at Incompecorp!</p>
           <p>Before we start, there's just the matter of the paperwork.</p>
           <Contract css={css} onSuccess={() => setStep(1)} />
         </>
@@ -28,7 +26,11 @@ export const Setup = (props) => {
     case 1:
       content = (
         <>
-          <p>Good to meet you {username}. I'm sure you'll do great.</p>
+          <p className={css.Speaker}>{manager}:</p>
+          <p>
+            Good to meet you {username}. I'm {manager} and I'll be your manager
+            here. I'm sure you'll do great.
+          </p>
           <p>
             Would you like a full induction or would you prefer to get started
             straight away?
@@ -41,6 +43,7 @@ export const Setup = (props) => {
     case 2:
       content = (
         <>
+          <p className={css.Speaker}>{manager}:</p>
           <p>Well no time to waste. The helpdesk awaits you!</p>
           <button onClick={() => onSetStage(STAGES.helpdesk)}>Let's Go!</button>
         </>
@@ -53,7 +56,6 @@ export const Setup = (props) => {
   return (
     <section className={css.Setup}>
       <h1>Helpdesk Simulator</h1>
-      <p className={css.Speaker}>{manager}:</p>
       {content}
     </section>
   );
@@ -61,7 +63,7 @@ export const Setup = (props) => {
 
 Setup.propTypes = {
   username: PropTypes.string,
-  manager: PropTypes.string.isRequired,
+  manager: PropTypes.string,
   onSetStage: PropTypes.func.isRequired,
 };
 

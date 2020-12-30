@@ -10,7 +10,7 @@ describe("<Contract />", () => {
     it("should map the dispatch functions to props correctly", () => {
       const componentDispatch = mapDispatchToProps(jest.fn);
 
-      expect(typeof componentDispatch.onSetUsername).toBe("function");
+      expect(typeof componentDispatch.onCreatePlayer).toBe("function");
     });
   });
 
@@ -19,7 +19,7 @@ describe("<Contract />", () => {
 
     beforeEach(() => {
       wrapper = shallow(
-        <Contract css={css} onSetUsername={jest.fn} onSuccess={jest.fn} />
+        <Contract css={css} onCreatePlayer={jest.fn} onSuccess={jest.fn} />
       );
     });
 

@@ -21,6 +21,7 @@
 }
 
 .InputContainer {
+  margin: 1rem 0;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -57,4 +58,32 @@
 .ValidationError {
   color: var(--theme4);
   margin: 0.3rem 0;
+}
+
+.Difficulty {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.Difficulty input {
+  display: none;
+}
+
+.Difficulty label {
+  padding: 0.6rem;
+  width: 48%;
+  border: 0.2rem solid transparent;
+  border-radius: 0.6rem;
+  font-weight: bold;
+  text-align: center;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+
+.Difficulty input:checked + label {
+  border-color: var(--theme2);
+  box-shadow: 0 1rem 1rem -0.6rem var(--shadow);
 }

@@ -53,3 +53,15 @@ export const getTimeBetweenTickets = (level) => {
     return 1000;
   }
 };
+
+export const MANAGERS = {
+  Lukasz: {
+    difficulty: "easy",
+  },
+  Alice: {
+    difficulty: "medium",
+  },
+  Matt: {
+    difficulty: "hard",
+  },
+};

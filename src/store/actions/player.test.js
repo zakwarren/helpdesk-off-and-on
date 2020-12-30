@@ -10,12 +10,14 @@ describe("player actions", () => {
     expect(action.player).toEqual(player);
   });
 
-  it("should return set username and username", () => {
+  it("should return create player and player data", () => {
     const username = "Test";
-    const action = actions.setUsername(username);
+    const manager = "Tester";
+    const action = actions.createPlayer(username, manager);
 
-    expect(action.type).toEqual(actionTypes.SET_USERNAME);
+    expect(action.type).toEqual(actionTypes.CREATE_PLAYER);
     expect(action.username).toEqual(username);
+    expect(action.manager).toEqual(manager);
   });
 
   it("should return add experience and experience", () => {

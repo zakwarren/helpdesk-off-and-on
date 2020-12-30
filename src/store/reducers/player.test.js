@@ -3,18 +3,15 @@ import reducer from "./player";
 
 describe("player reducer", () => {
   const initialState = {
-    username: "Newbie",
-    level: 1,
+    username: "",
+    level: 0,
     experience: 0,
     dayExperience: 0,
-    manager: "Lukasz",
+    manager: null,
     isManager: false,
-    charisma: 50,
-    chanceDisaster: 90,
-    skills: {
-      password: 5,
-      hardware: 5,
-    },
+    charisma: 0,
+    chanceDisaster: 0,
+    skills: {},
   };
 
   it("should return the initial state when invalid type", () => {
@@ -35,15 +32,21 @@ describe("player reducer", () => {
     expect(newState.level).toEqual(player.level);
   });
 
-  it("should set username", () => {
+  it("should create new player", () => {
     const username = "test";
+    const manager = "Tester";
     const newState = reducer(initialState, {
-      type: actionTypes.SET_USERNAME,
+      type: actionTypes.CREATE_PLAYER,
       username,
+      manager,
     });
 
     expect(newState).not.toEqual(initialState);
     expect(newState.username).toEqual(username);
+    expect(newState.manager).toEqual(manager);
+    expect(newState.charisma).toBeGreaterThan(0);
+    expect(newState.chanceDisaster).toBeGreaterThan(0);
+    expect(Object.keys(newState.skills).length).toBeGreaterThan(0);
   });
 
   it("should add experience but not level up", () => {
@@ -62,27 +65,35 @@ describe("player reducer", () => {
   });
 
   it("should add experience and level up", () => {
+    const state = {
+      username: "Newbie",
+      level: 1,
+      experience: 0,
+      dayExperience: 0,
+      manager: "Lukasz",
+      isManager: false,
+      charisma: 50,
+      chanceDisaster: 90,
+      skills: {
+        password: 5,
+        hardware: 5,
+      },
+    };
     const experience = 110;
-    const newState = reducer(initialState, {
+    const newState = reducer(state, {
       type: actionTypes.ADD_EXPERIENCE,
       experience,
     });
 
-    expect(newState).not.toEqual(initialState);
+    expect(newState).not.toEqual(state);
     expect(newState.experience).toEqual(10);
-    expect(newState.dayExperience).toEqual(
-      initialState.dayExperience + experience
-    );
-    expect(newState.level).toEqual(initialState.level + 1);
+    expect(newState.dayExperience).toEqual(state.dayExperience + experience);
+    expect(newState.level).toEqual(state.level + 1);
 
-    expect(newState.charisma).toBeGreaterThan(initialState.charisma);
-    expect(newState.chanceDisaster).toBeLessThan(initialState.chanceDisaster);
-    expect(newState.skills.password).toBeGreaterThan(
-      initialState.skills.password
-    );
-    expect(newState.skills.hardware).toBeGreaterThan(
-      initialState.skills.hardware
-    );
+    expect(newState.charisma).toBeGreaterThan(state.charisma);
+    expect(newState.chanceDisaster).toBeLessThan(state.chanceDisaster);
+    expect(newState.skills.password).toBeGreaterThan(state.skills.password);
+    expect(newState.skills.hardware).toBeGreaterThan(state.skills.hardware);
   });
 
   it("should reset day experience", () => {

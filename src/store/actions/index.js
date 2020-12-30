@@ -12,7 +12,7 @@ export {
 } from "./game";
 export {
   loadPlayer,
-  setUsername,
+  createPlayer,
   addExperience,
   clearDayExperience,
 } from "./player";

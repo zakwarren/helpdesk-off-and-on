@@ -3,18 +3,29 @@ import { updateObject, weightedRandom } from "../../shared/utilities";
 import { MAX_EXPERIENCE, getSkills } from "../../shared/config";
 
 const initialState = {
-  username: "Newbie",
-  level: 1,
+  username: "",
+  level: 0,
   experience: 0,
   dayExperience: 0,
-  manager: "Lukasz",
+  manager: null,
   isManager: false,
-  charisma: Math.min(100, weightedRandom(100, 4)),
-  chanceDisaster: Math.min(100, weightedRandom(100, 4)),
-  skills: {
-    password: Math.min(100, weightedRandom(10, 4)),
-    hardware: Math.min(100, weightedRandom(10, 4)),
-  },
+  charisma: 0,
+  chanceDisaster: 0,
+  skills: {},
+};
+
+const createPlayer = (state, action) => {
+  return updateObject(state, {
+    username: action.username,
+    level: 1,
+    manager: action.manager,
+    charisma: Math.min(100, weightedRandom(100, 4)),
+    chanceDisaster: Math.min(100, weightedRandom(100, 4)),
+    skills: {
+      password: Math.min(100, weightedRandom(10, 4)),
+      hardware: Math.min(100, weightedRandom(10, 4)),
+    },
+  });
 };
 
 const bumpSkill = (currentValue) => {
@@ -66,8 +77,8 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.LOAD_PLAYER:
       return updateObject(state, action.player);
-    case actionTypes.SET_USERNAME:
-      return updateObject(state, { username: action.username });
+    case actionTypes.CREATE_PLAYER:
+      return createPlayer(state, action);
     case actionTypes.ADD_EXPERIENCE:
       return addExperience(state, action);
     case actionTypes.CLEAR_DAY_EXPERIENCE:

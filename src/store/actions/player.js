@@ -7,10 +7,11 @@ export const loadPlayer = (player) => {
   };
 };
 
-export const setUsername = (username) => {
+export const createPlayer = (username, manager) => {
   return {
-    type: actionTypes.SET_USERNAME,
+    type: actionTypes.CREATE_PLAYER,
     username,
+    manager,
   };
 };
 
