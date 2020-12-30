@@ -6,6 +6,7 @@ import css from "./Setup.module.css";
 import * as actions from "../../store/actions";
 import { STAGES } from "../../shared/config";
 import Contract from "./contract/Contract";
+import Text from "./text/Text";
 
 export const Setup = (props) => {
   const { username, manager, onSetStage } = props;
@@ -27,14 +28,7 @@ export const Setup = (props) => {
       content = (
         <>
           <p className={css.Speaker}>{manager}:</p>
-          <p>
-            Good to meet you {username}. I'm {manager} and I'll be your manager
-            here. I'm sure you'll do great.
-          </p>
-          <p>
-            Would you like a full induction or would you prefer to get started
-            straight away?
-          </p>
+          <Text {...{ step, username, manager }} />
           <button onClick={() => onSetStage(STAGES.tutorial)}>Induction</button>
           <button onClick={() => setStep(2)}>Quick Start</button>
         </>
@@ -44,7 +38,7 @@ export const Setup = (props) => {
       content = (
         <>
           <p className={css.Speaker}>{manager}:</p>
-          <p>Well no time to waste. The helpdesk awaits you!</p>
+          <Text {...{ step, username, manager }} />
           <button onClick={() => onSetStage(STAGES.helpdesk)}>Let's Go!</button>
         </>
       );
