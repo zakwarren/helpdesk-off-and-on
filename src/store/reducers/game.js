@@ -142,6 +142,8 @@ const reset = (state) => {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.RESET_GAME:
+      return initialState;
     case actionTypes.LOAD_GAME:
       return updateObject(state, {
         day: action.day,

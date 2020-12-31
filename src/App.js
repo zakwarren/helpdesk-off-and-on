@@ -1,17 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
 import css from "./App.module.css";
-import { Menu, Game } from "./containers";
-import { useLoadGame } from "./hooks";
+import { Menu, Game, Start } from "./containers";
 
 const App = () => {
-  useLoadGame();
+  const [isStart, setIsStart] = useState(true);
 
   return (
     <>
       <Menu />
       <main className={css.Main}>
-        <Game />
+        {isStart ? <Start onStart={() => setIsStart(false)} /> : <Game />}
       </main>
     </>
   );

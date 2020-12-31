@@ -1,5 +1,11 @@
 import * as actionTypes from "./actionTypes";
 
+export const resetPlayer = () => {
+  return {
+    type: actionTypes.RESET_PLAYER,
+  };
+};
+
 export const loadPlayer = (player) => {
   return {
     type: actionTypes.LOAD_PLAYER,

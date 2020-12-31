@@ -26,6 +26,12 @@ describe("game reducer", () => {
     expect(newState).toEqual(initialState);
   });
 
+  it("should return the initial state on reset game", () => {
+    const newState = reducer(initialState, { type: actionTypes.RESET_GAME });
+
+    expect(newState).toEqual(initialState);
+  });
+
   it("should return the loaded data", () => {
     const action = {
       type: actionTypes.LOAD_GAME,

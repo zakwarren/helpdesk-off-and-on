@@ -1,0 +1,17 @@
+.Start {
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+.Controls {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 500px) {
+  .Controls {
+    width: 60%;
+  }
+}

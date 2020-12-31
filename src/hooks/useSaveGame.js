@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { loadPlayer, loadGame } from "../store/actions";
@@ -17,6 +17,7 @@ export const useSaveGame = () => {
 
 export const useLoadGame = () => {
   const dispatch = useDispatch();
+  const [hasSaveData, setHasSaveData] = useState(false);
 
   useEffect(() => {
     const saveData = localStorage.getItem(STORAGE);
@@ -24,6 +25,9 @@ export const useLoadGame = () => {
       const { player, day, stage, yearData } = JSON.parse(saveData);
       dispatch(loadPlayer(player));
       dispatch(loadGame(day, stage, yearData));
+      setHasSaveData(true);
     }
   }, [dispatch]);
+
+  return hasSaveData;
 };

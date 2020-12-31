@@ -20,6 +20,12 @@ describe("player reducer", () => {
     expect(newState).toEqual(initialState);
   });
 
+  it("should return initial state on reset player", () => {
+    const newState = reducer(initialState, { type: actionTypes.RESET_PLAYER });
+
+    expect(newState).toEqual(initialState);
+  });
+
   it("should set player data", () => {
     const player = { username: "Test", level: 2 };
     const newState = reducer(initialState, {
@@ -34,7 +40,7 @@ describe("player reducer", () => {
 
   it("should create new player", () => {
     const username = "test";
-    const manager = "Tester";
+    const manager = "Lukasz";
     const newState = reducer(initialState, {
       type: actionTypes.CREATE_PLAYER,
       username,

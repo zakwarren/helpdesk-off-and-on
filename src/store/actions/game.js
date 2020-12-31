@@ -2,6 +2,12 @@ import * as actionTypes from "./actionTypes";
 import { getRandomArrayItem, weightedRandom } from "../../shared/utilities";
 import { NAMES, ISSUES } from "../data";
 
+export const resetGame = () => {
+  return {
+    type: actionTypes.RESET_GAME,
+  };
+};
+
 export const loadGame = (day, stage, yearData) => {
   return {
     type: actionTypes.LOAD_GAME,

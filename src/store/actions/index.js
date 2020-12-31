@@ -1,4 +1,5 @@
 export {
+  resetGame,
   loadGame,
   setStage,
   nextDay,
@@ -11,6 +12,7 @@ export {
   resetTickets,
 } from "./game";
 export {
+  resetPlayer,
   loadPlayer,
   createPlayer,
   addExperience,

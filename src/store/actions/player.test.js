@@ -2,6 +2,12 @@ import * as actionTypes from "./actionTypes";
 import * as actions from "./player";
 
 describe("player actions", () => {
+  it("should return reset player", () => {
+    const action = actions.resetPlayer();
+
+    expect(action.type).toEqual(actionTypes.RESET_PLAYER);
+  });
+
   it("should return load player and player data", () => {
     const player = { test: "test" };
     const action = actions.loadPlayer(player);
