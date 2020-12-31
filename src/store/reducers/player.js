@@ -28,17 +28,14 @@ const createPlayer = (state, action) => {
         100,
         weightedRandom(manager.skillMax, manager.skillDie)
       ),
-      hardware: Math.min(
-        100,
-        weightedRandom(manager.skillMax, manager.skillDie)
-      ),
     },
   });
 };
 
-const bumpSkill = (currentValue) => {
+const bumpSkill = (currentValue, manager) => {
   const bump = Math.floor(Math.random() * (3 - 1) + 1);
-  const val = currentValue + bump || bump;
+  const val =
+    currentValue + bump || weightedRandom(manager.skillMax, manager.skillDie);
   return Math.min(val, 100);
 };
 
@@ -52,13 +49,14 @@ const levelUp = (state, action) => {
   const level = state.level + 1;
   const dayExperience = state.dayExperience + action.experience;
   const experience = state.experience + action.experience - MAX_EXPERIENCE;
-  const charisma = bumpSkill(state.charisma);
+  const manager = MANAGERS[state.manager];
+  const charisma = bumpSkill(state.charisma, manager);
   const chanceDisaster = reduceChance(state.chanceDisaster);
 
   const unlockedSkills = getSkills(level);
   const skills = {};
   for (const s of unlockedSkills) {
-    skills[s] = bumpSkill(state.skills[s]);
+    skills[s] = bumpSkill(state.skills[s], manager);
   }
 
   return updateObject(state, {

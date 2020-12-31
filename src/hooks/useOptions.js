@@ -12,7 +12,7 @@ export const useOptions = (issueType) => {
     const options = fourOptions.map((opt) => {
       return {
         text: opt,
-        difficulty: weightedRandom(skills[issueType] * 2, 4),
+        difficulty: Math.min(99, weightedRandom(skills[issueType] * 2, 4)),
       };
     });
     return options;
