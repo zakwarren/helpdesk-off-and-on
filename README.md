@@ -5,6 +5,8 @@ game. Play as a new, bright-eyed IT helpdesk technician at
 Incompecorp. Your job is to help customers with their IT issues,
 avoid disaster and improve your skills one ticket at a time.
 
+Play it at [Helpdesk](http://zakwarren.github.io/helpdesk-off-and-on).
+
 ## How to run development environment
 
 You need [Node.js](https://nodejs.org) installed on your machine.
