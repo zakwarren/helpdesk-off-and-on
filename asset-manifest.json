@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/helpdesk-off-and-on/static/css/main.5a4d6236.chunk.css",
+    "main.js": "/helpdesk-off-and-on/static/js/main.71b987eb.chunk.js",
+    "main.js.map": "/helpdesk-off-and-on/static/js/main.71b987eb.chunk.js.map",
+    "runtime-main.js": "/helpdesk-off-and-on/static/js/runtime-main.40c39e84.js",
+    "runtime-main.js.map": "/helpdesk-off-and-on/static/js/runtime-main.40c39e84.js.map",
+    "static/js/2.17728ea9.chunk.js": "/helpdesk-off-and-on/static/js/2.17728ea9.chunk.js",
+    "static/js/2.17728ea9.chunk.js.map": "/helpdesk-off-and-on/static/js/2.17728ea9.chunk.js.map",
+    "static/js/3.20868c41.chunk.js": "/helpdesk-off-and-on/static/js/3.20868c41.chunk.js",
+    "static/js/3.20868c41.chunk.js.map": "/helpdesk-off-and-on/static/js/3.20868c41.chunk.js.map",
+    "index.html": "/helpdesk-off-and-on/index.html",
+    "service-worker.js": "/helpdesk-off-and-on/service-worker.js",
+    "service-worker.js.map": "/helpdesk-off-and-on/service-worker.js.map",
+    "static/css/main.5a4d6236.chunk.css.map": "/helpdesk-off-and-on/static/css/main.5a4d6236.chunk.css.map",
+    "static/js/2.17728ea9.chunk.js.LICENSE.txt": "/helpdesk-off-and-on/static/js/2.17728ea9.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.40c39e84.js",
+    "static/js/2.17728ea9.chunk.js",
+    "static/css/main.5a4d6236.chunk.css",
+    "static/js/main.71b987eb.chunk.js"
+  ]
+}
