@@ -6,6 +6,7 @@ import css from "./Tutorial.module.css";
 import * as actions from "../../store/actions";
 import { STAGES } from "../../shared/config";
 import { IssueTray } from "../../components";
+import Text from "./text/Text";
 
 const ticket1 = {
   id: 1,
@@ -45,10 +46,10 @@ export const Tutorial = (props) => {
     case 0:
       render = (
         <>
-          <p>
-            Welcome to the Helpdesk, {username}. I hope you've had your bacon
-            sandwiches this morning. It's time to get started.
-          </p>
+          <Text
+            {...{ step, username, chanceDisaster, manager }}
+            ticket={ticket1}
+          />
           <button onClick={() => setStep(1)}>Next</button>
         </>
       );
@@ -60,13 +61,10 @@ export const Tutorial = (props) => {
         setStep(2);
       };
       render = (
-        <>
-          <p>
-            Oh what good timing! A customer has arrived. Let's find out what
-            they need.
-          </p>
-          <p>First select them from the queue.</p>
-        </>
+        <Text
+          {...{ step, username, chanceDisaster, manager }}
+          ticket={ticket1}
+        />
       );
       break;
     case 2:
@@ -74,11 +72,10 @@ export const Tutorial = (props) => {
       onSelectTicket = () => {};
       render = (
         <>
-          <p>
-            {ticket1.customer} has an issue with their {ticket1.issueType}. This
-            is an easy one to solve. Take a look at your options below. Click
-            one to make your choice.
-          </p>
+          <Text
+            {...{ step, username, chanceDisaster, manager }}
+            ticket={ticket1}
+          />
           <button onClick={() => setStep(3)}>
             Try turning it off and on again
           </button>
@@ -91,12 +88,10 @@ export const Tutorial = (props) => {
     case 3:
       render = (
         <>
-          <p>
-            Congratulations! You've successfully helped this customer. You've
-            earned {ticket1.experience} experience from this helpdesk issue.
-            When you achieve enough experience you'll level up. This will
-            increase your skills and even unlock new skills.
-          </p>
+          <Text
+            {...{ step, username, chanceDisaster, manager }}
+            ticket={ticket1}
+          />
           <button onClick={() => setStep(4)}>Next</button>
         </>
       );
@@ -108,12 +103,10 @@ export const Tutorial = (props) => {
         setStep(5);
       };
       render = (
-        <>
-          <p>
-            You've got another customer waiting. Select them from the queue to
-            find out what they need.
-          </p>
-        </>
+        <Text
+          {...{ step, username, chanceDisaster, manager }}
+          ticket={ticket1}
+        />
       );
       break;
     case 5:
@@ -134,14 +127,12 @@ export const Tutorial = (props) => {
       break;
     case 6:
       openTickets.push(ticket2);
-      const halfExp = Math.floor(ticket2.experience / 2);
       render = (
         <>
-          <p>
-            Failed to solve {ticket2.issueType} issue! Don't worry about that.
-            It happens a lot when you're new. Failure is a good opportunity to
-            learn. This time you gained {halfExp} experience.
-          </p>
+          <Text
+            {...{ step, username, chanceDisaster, manager }}
+            ticket={ticket2}
+          />
           <button onClick={() => setStep(7)}>Next</button>
         </>
       );
@@ -153,14 +144,10 @@ export const Tutorial = (props) => {
         setStep(8);
       };
       render = (
-        <>
-          <p>
-            Fortunately this customer has {ticket2.patience}% patience. Each
-            time you fail their patience will decrease. When it reaches 0
-            they'll leave.
-          </p>
-          <p>Select the ticket to try again.</p>
-        </>
+        <Text
+          {...{ step, username, chanceDisaster, manager }}
+          ticket={ticket2}
+        />
       );
       break;
     case 8:
@@ -180,11 +167,10 @@ export const Tutorial = (props) => {
     case 9:
       render = (
         <>
-          <p>
-            Congratulations! You've successfully helped {ticket2.customer}.
-            You've also earned {ticket2.experience} points.
-          </p>
-          <p>Let's try helping one more customer together.</p>
+          <Text
+            {...{ step, username, chanceDisaster, manager }}
+            ticket={ticket2}
+          />
           <button onClick={() => setStep(10)}>Next</button>
         </>
       );
@@ -195,7 +181,6 @@ export const Tutorial = (props) => {
         setSelectedTicket(ticket);
         setStep(11);
       };
-      render = <></>;
       break;
     case 11:
       openTickets.push(ticket3);
@@ -214,12 +199,10 @@ export const Tutorial = (props) => {
     case 12:
       render = (
         <>
-          <p>Disaster! You destroyed the hardware!</p>
-          <p>
-            Oh dear! This can happen occasionally. Your current chance of
-            disaster is {chanceDisaster}%. You'll reduce this chance with
-            experience.
-          </p>
+          <Text
+            {...{ step, username, chanceDisaster, manager }}
+            ticket={ticket3}
+          />
           <button onClick={() => setStep(13)}>Next</button>
         </>
       );
@@ -227,10 +210,10 @@ export const Tutorial = (props) => {
     case 13:
       render = (
         <>
-          <p>
-            That's all the induction I had planned for today. You now know
-            enough to try it on your own. Good luck!
-          </p>
+          <Text
+            {...{ step, username, chanceDisaster, manager }}
+            ticket={ticket3}
+          />
           <button onClick={onToHelpdesk}>Begin</button>
         </>
       );
