@@ -1,6 +1,6 @@
 .Controls {
   padding: 1rem;
-  height: 20vh;
+  height: 30vh;
   border-top: 0.2rem solid var(--theme);
   box-shadow: 0 -0.24rem 0.5rem 0 var(--shadow);
 }
