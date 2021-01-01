@@ -47,13 +47,13 @@ export const Contract = (props) => {
           </div>
           <div className={css.InputContainer}>
             <label className={css.Label} htmlFor="difficulty">
-              Manager:
+              Difficulty:
             </label>
             <div className={css.Difficulty}>
               {managers.map((man) => (
                 <React.Fragment key={man}>
                   <Field type="radio" name="difficulty" id={man} value={man} />
-                  <label htmlFor={man}>{man}</label>
+                  <label htmlFor={man}>{MANAGERS[man]?.difficulty}</label>
                 </React.Fragment>
               ))}
             </div>
